@@ -328,6 +328,16 @@ section:nth-child(even) { background: var(--surface); }
     height: 100%;
     border-radius: var(--radius);
 }
+.video-fallback {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: .85rem;
+    margin-top: 14px;
+}
+.video-fallback a {
+    color: var(--accent2);
+    font-weight: 600;
+}
 
 /* ── Screenshots ─────────────────────────────────────────── */
 .screenshot-grid {
@@ -359,6 +369,18 @@ section:nth-child(even) { background: var(--surface); }
     width: 100%;
     height: auto;
     display: block;
+    min-height: 120px;
+    background: var(--surface);
+}
+.screenshot-card img.img-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    color: var(--text-dim);
+    font-size: .85rem;
+    text-align: center;
+    padding: 24px;
 }
 
 /* ── Steps ────────────────────────────────────────────────── */

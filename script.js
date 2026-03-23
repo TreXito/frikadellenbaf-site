@@ -32,7 +32,7 @@ const revealObserver = new IntersectionObserver((entries) => {
             revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.15 });
+}, { threshold: 0.1 });
 
 revealElements.forEach(el => {
     el.style.opacity = '0';
@@ -45,3 +45,11 @@ revealElements.forEach(el => {
 const style = document.createElement('style');
 style.textContent = `.revealed { opacity: 1 !important; transform: translateY(0) !important; }`;
 document.head.appendChild(style);
+
+// ── Broken Image Fallback ─────────────────────────────────
+document.querySelectorAll('.screenshot-card img').forEach(img => {
+    img.addEventListener('error', () => {
+        img.classList.add('img-error');
+        img.alt = '⚠ ' + img.alt + ' — image failed to load';
+    });
+});
