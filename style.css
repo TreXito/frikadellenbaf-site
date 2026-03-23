@@ -372,7 +372,7 @@ section:nth-child(even) { background: var(--surface); }
     min-height: 120px;
     background: var(--surface);
 }
-.screenshot-card img.img-error {
+.screenshot-card .img-error {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -381,6 +381,7 @@ section:nth-child(even) { background: var(--surface); }
     font-size: .85rem;
     text-align: center;
     padding: 24px;
+    background: var(--surface);
 }
 
 /* ── Steps ────────────────────────────────────────────────── */

@@ -49,7 +49,9 @@ document.head.appendChild(style);
 // ── Broken Image Fallback ─────────────────────────────────
 document.querySelectorAll('.screenshot-card img').forEach(img => {
     img.addEventListener('error', () => {
-        img.classList.add('img-error');
-        img.alt = '⚠ ' + img.alt + ' — image failed to load';
+        const placeholder = document.createElement('div');
+        placeholder.className = 'img-error';
+        placeholder.textContent = '\u26A0 ' + img.alt + ' \u2014 image failed to load';
+        img.replaceWith(placeholder);
     });
 });
