@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frikadellen BAF — Auction &amp; Bazaar Flipper for Hypixel SkyBlock</title>
-    <meta name="description" content="A Coflnet-powered flipper that macros the Auction House &amp; Bazaar with sub-second buys, automatic selling, Discord control and live profit tracking. Built in Rust.">
+    <title>Frikadellen BAF — Hypixel SkyBlock AH &amp; Bazaar Flipping Macro</title>
+    <meta name="description" content="Frikadellen BAF is a fast, Coflnet-powered Hypixel SkyBlock macro that flips the Auction House and Bazaar automatically — sub-second BIN sniping, auto-selling, Discord control. Free &amp; open source.">
+    <meta name="keywords" content="skyblock macro, hypixel skyblock macro, skyblock ah macro, skyblock auction house macro, skyblock bz macro, skyblock bazaar macro, auction flipper, ah flipping macro, bazaar flipping macro, coflnet macro, hypixel flipping bot, frikadellen baf">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="TreXito">
+    <link rel="canonical" href="https://auctionflipper.bz/">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -27,6 +31,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23f5b942' stroke='%23b8841f' stroke-width='6'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%237a5410' font-family='monospace' font-weight='bold'>$</text></svg>">
+
+    <!-- Structured data: software app + FAQ (rich results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Frikadellen BAF",
+      "alternateName": "Frikadellen BAF SkyBlock Macro",
+      "description": "A fast, Coflnet-powered Hypixel SkyBlock macro that flips the Auction House and Bazaar automatically — sub-second BIN sniping, automatic selling, Discord control and live profit tracking.",
+      "url": "https://auctionflipper.bz/",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Linux, Windows, macOS",
+      "softwareVersion": "3.0",
+      "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+      "author": { "@type": "Person", "name": "TreXito", "url": "https://trexito.com" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "keywords": "skyblock macro, hypixel skyblock ah macro, skyblock bazaar macro, auction flipper, coflnet macro"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is Frikadellen BAF?", "acceptedAnswer": { "@type": "Answer", "text": "Frikadellen BAF is a Hypixel SkyBlock macro that automatically flips the Auction House and Bazaar. It uses Coflnet's flip data to snipe underpriced BIN auctions in milliseconds, relists them at target, runs your bazaar orders, and tracks profit — controllable from a web panel or from Discord." } },
+        { "@type": "Question", "name": "Is it a free SkyBlock macro?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Frikadellen BAF is free and open source under the AGPLv3 license. You only need a Coflnet account for the flip feed." } },
+        { "@type": "Question", "name": "Does it work as both an AH macro and a Bazaar macro?", "acceptedAnswer": { "@type": "Answer", "text": "Both. It runs Auction House flipping (sub-second BIN buying, auto-relisting, claiming sold auctions) and Bazaar flipping (automatic buy/sell orders, fill tracking, stale-order cancellation) at the same time, and you can toggle each independently." } },
+        { "@type": "Question", "name": "What do I need to run the macro?", "acceptedAnswer": { "@type": "Answer", "text": "A Minecraft: Java Edition account, a Coflnet account, and a machine to run it on. A cheap Linux VPS (ideally in the US, near Hypixel's servers) is recommended so it runs 24/7 with low latency. Windows and macOS builds are also provided." } },
+        { "@type": "Question", "name": "How fast is the auction flipping?", "acceptedAnswer": { "@type": "Answer", "text": "The buy path is typically under 100ms, with confirm pre-clicking and a 300fps detection loop. Actual speed depends mostly on your latency to Hypixel, which the built-in /hypixel ping command measures." } },
+        { "@type": "Question", "name": "Can I control the macro from Discord?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Link your bot with a one-time code, then use slash commands like /list, /auctions, /pause, /profit and /leaderboard — no port forwarding or public web panel required." } }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -39,6 +76,7 @@
             <li><a href="#screenshots">Screenshots</a></li>
             <li><a href="#how-it-works">How it works</a></li>
             <li><a href="#install">Install</a></li>
+            <li><a href="#faq">FAQ</a></li>
             <li><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a></li>
             <li><a href="https://discord.gg/42DvX6T9jh" class="btn-nav" target="_blank" rel="noopener">Discord →</a></li>
         </ul>
@@ -372,6 +410,43 @@
 
         <div class="install-cta">
             <a href="https://github.com/TreXito/frikadellen-baf-121#readme" class="btn btn-ghost" target="_blank" rel="noopener">Full setup guide (rent a VPS → run)</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────── -->
+<section id="faq">
+    <div class="container">
+        <div class="section-head">
+            <span class="sec-num">06</span>
+            <h2 class="section-title">SkyBlock macro FAQ</h2>
+            <p class="section-subtitle">The common questions about the Auction House &amp; Bazaar flipping macro.</p>
+        </div>
+        <div class="faq">
+            <details class="faq-item" open>
+                <summary>What is Frikadellen BAF?</summary>
+                <p>Frikadellen BAF is a <strong>Hypixel SkyBlock macro</strong> that automatically flips the Auction House and Bazaar. It uses Coflnet's flip feed to snipe underpriced BIN auctions in milliseconds, relists them at target, runs your bazaar orders, and tracks profit — controllable from a web panel or straight from Discord.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is it a free SkyBlock macro?</summary>
+                <p>Yes — it's <strong>free and open source</strong> under the AGPLv3 license. You only need a Coflnet account for the flip data.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does it work as both an AH macro and a Bazaar macro?</summary>
+                <p>Both. It runs <strong>Auction House flipping</strong> (sub-second BIN buying, auto-relisting, claiming sold auctions) and <strong>Bazaar flipping</strong> (automatic buy/sell orders, fill tracking, stale-order cancellation) at once, and you can toggle each independently.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What do I need to run the macro?</summary>
+                <p>A Minecraft: Java Edition account, a Coflnet account, and somewhere to run it. A cheap <strong>Linux VPS</strong> (ideally in the US, near Hypixel's servers) is recommended for 24/7 low-latency running; Windows and macOS builds are provided too. See the <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">setup guide</a>.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How fast is the auction flipping?</summary>
+                <p>The buy path is typically <strong>under 100&nbsp;ms</strong>, with confirm pre-clicking and a 300&nbsp;fps detection loop. Real speed depends mostly on your latency to Hypixel, which the built-in <code>/hypixel ping</code> command measures.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I control the macro from Discord?</summary>
+                <p>Yes. Link your bot with a one-time code, then use slash commands like <code>/list</code>, <code>/auctions</code>, <code>/pause</code>, <code>/profit</code> and <code>/leaderboard</code> — no port forwarding or public web panel required.</p>
+            </details>
         </div>
     </div>
 </section>
