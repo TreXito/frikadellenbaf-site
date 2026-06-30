@@ -51,7 +51,11 @@ document.querySelectorAll('.screenshot-card img').forEach(img => {
     img.addEventListener('error', () => {
         const placeholder = document.createElement('div');
         placeholder.className = 'img-error';
-        placeholder.textContent = '\u26A0 ' + img.alt + ' \u2014 image failed to load';
+        const card = img.closest('.screenshot-card');
+        const label = card && card.querySelector('.screenshot-label');
+        placeholder.innerHTML = '<span class="img-error-icon">\uD83D\uDCF7</span>'
+            + (label ? label.textContent.trim() : 'Screenshot')
+            + '<span class="img-error-sub">Preview coming soon</span>';
         img.replaceWith(placeholder);
     });
 });
