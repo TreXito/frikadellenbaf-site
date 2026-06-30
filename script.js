@@ -124,8 +124,8 @@ document.querySelectorAll('.screenshot-card img').forEach(img => {
         let active = 0, slideW = 0, gap = 24;
         function measure() {
             const vw = viewport.clientWidth;
-            slideW = Math.min(620, Math.round(vw * 0.74));
-            gap = Math.max(14, Math.round(slideW * 0.05));
+            slideW = Math.min(470, Math.round(vw * 0.62));
+            gap = Math.max(12, Math.round(slideW * 0.05));
             slides.forEach(s => s.style.width = slideW + 'px');
             track.style.gap = gap + 'px';
         }
