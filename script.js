@@ -60,17 +60,23 @@ document.querySelectorAll('.screenshot-card img').forEach(img => {
     });
 });
 
-// ── Live flips feed ───────────────────────────────────────
-// A rolling, anonymized snapshot loaded from flips.json. New rows slide in on
-// an interval and age over time, so it reads as a live feed without any backend.
+// ── Big-flips carousel ────────────────────────────────────
+// A 16:9 banner reel of real 5M+ flips (flips.json, anonymized). The active
+// banner is centered with the neighbours peeking on either side, and it slides
+// to the next on an interval — seamless infinite loop via cloned slides.
 (function () {
     const section = document.getElementById('live');
-    const feed = document.getElementById('feed');
-    if (!section || !feed) return;
+    const viewport = document.getElementById('carousel');
+    const track = document.getElementById('ctrack');
+    if (!section || !viewport || !track) return;
 
-    const MAX_ROWS = 6;
-    const TICK_MS = 3200;
-    const RARITY = { legendary:'#f5b942', mythic:'#e0a3ff', epic:'#b08bff', rare:'#5aa9ff' };
+    const ADVANCE_MS = 4200, ANIM_MS = 650, CLONES = 2;
+    // True SkyBlock rarity colours for the item name (readable on dark).
+    const RCOLOR = { common:'#f5f5f5', uncommon:'#5cff5c', rare:'#5b8cff', epic:'#c45bff',
+        legendary:'#ffb627', mythic:'#ff66e0', divine:'#4fe0ff', special:'#ff6b6b',
+        very_special:'#ff6b6b', supreme:'#ff6b6b', ultimate:'#ff4d4d' };
+    const ICON = (tag) => 'https://sky.coflnet.com/static/icon/' + encodeURIComponent(tag);
+    const flipLabel = (p) => p >= 100e6 ? 'INSANE FLIP' : p >= 30e6 ? 'HUGE FLIP' : 'BIG FLIP';
 
     const fmt = (n) => {
         n = +n || 0; const a = Math.abs(n);
@@ -79,63 +85,68 @@ document.querySelectorAll('.screenshot-card img').forEach(img => {
         if (a >= 1e3) return (n/1e3).toFixed(0)+'K';
         return ''+n;
     };
-    const ago = (sec) => sec < 3 ? 'just now' : sec < 60 ? sec+'s ago'
-        : Math.floor(sec/60)+'m '+(sec%60)+'s ago';
 
-    const shuffle = (arr) => { for (let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; };
-
-    function rowHTML(f) {
-        const stars = f.stars ? ` <span class="fr-stars">${f.stars}</span>` : '';
-        return `<div class="fr-bar"></div>
-            <div class="fr-main">
-              <span class="fr-item">${f.item}${stars}</span>
-              <span class="fr-sub">${fmt(f.price)} <span class="fr-arrow">→</span> ${fmt(f.target)} · ⚡${f.speed}ms · 🔎 ${f.finder}</span>
+    function slideHTML(f) {
+        const col = RCOLOR[f.rarity] || '#ffd470';
+        const icon = f.tag ? `<img class="cs-icon" src="${ICON(f.tag)}" loading="lazy" alt="" onerror="this.remove()">` : '';
+        return `<div class="cs-head">
+              ${icon}
+              <div class="cs-headtext">
+                <div class="cs-tagline"><span class="cs-tag">${flipLabel(f.profit)}</span><span class="cs-finder">🔎 ${f.finder}</span></div>
+                <div class="cs-item" style="color:${col}">${f.item}</div>
+              </div>
             </div>
-            <div class="fr-side">
-              <span class="fr-profit">+${fmt(f.profit)}</span>
-              <span class="fr-roi">${f.roi}% ROI</span>
-              <span class="fr-time" data-t="0">just now</span>
+            <div class="cs-profit">+${fmt(f.profit)}<span class="cs-roi">${f.roi}% ROI</span></div>
+            <div class="cs-stats">
+              <div><span>Bought</span><b>${fmt(f.price)}</b></div>
+              <div><span>Target</span><b>${fmt(f.target)}</b></div>
+              <div><span>Buy speed</span><b>${f.speed}ms</b></div>
             </div>`;
     }
-
-    function addRow(f, animate) {
+    function makeSlide(f) {
         const el = document.createElement('div');
-        el.className = 'feed-row' + (animate ? ' entering' : '');
-        el.style.setProperty('--rar', RARITY[f.rarity] || '#f5b942');
-        el.dataset.born = Date.now();
-        el.innerHTML = rowHTML(f);
-        feed.prepend(el);
-        if (animate) requestAnimationFrame(() => el.classList.remove('entering'));
-        while (feed.children.length > MAX_ROWS) {
-            const last = feed.lastElementChild;
-            last.classList.add('leaving');
-            setTimeout(() => last.remove(), 400);
-        }
-    }
-
-    function tickAges() {
-        const now = Date.now();
-        feed.querySelectorAll('.feed-row').forEach(r => {
-            const t = r.querySelector('.fr-time');
-            if (t) t.textContent = ago(Math.floor((now - +r.dataset.born) / 1000));
-        });
+        el.className = 'cs';
+        el.style.setProperty('--rar', RCOLOR[f.rarity] || '#f5b942');  // icon glow tint
+        el.innerHTML = slideHTML(f);
+        return el;
     }
 
     fetch('flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
-        if (!Array.isArray(data) || !data.length) return;
-        const pool = shuffle(data.slice());
-        let i = 0;
-        const next = () => pool[(i++) % pool.length];
+        if (!Array.isArray(data) || data.length < 3) return;
+        for (let i = data.length-1; i>0; i--){ const j = Math.floor(Math.random()*(i+1)); [data[i],data[j]]=[data[j],data[i]]; }
 
+        const real = data.length;
+        data.forEach(f => track.appendChild(makeSlide(f)));
+        for (let k = 0; k < CLONES; k++) track.appendChild(makeSlide(data[k]));  // seamless wrap
+        const slides = Array.from(track.children);
         section.hidden = false;
-        // Seed the feed with a few rows, pre-aged so it doesn't look empty.
-        for (let s = MAX_ROWS - 1; s >= 0; s--) {
-            const f = next();
-            addRow(f, false);
-            feed.firstElementChild.dataset.born = Date.now() - (s + 1) * 4000;
+
+        let active = 0, slideW = 0, gap = 24;
+        function measure() {
+            const vw = viewport.clientWidth;
+            slideW = Math.min(620, Math.round(vw * 0.74));
+            gap = Math.max(14, Math.round(slideW * 0.05));
+            slides.forEach(s => s.style.width = slideW + 'px');
+            track.style.gap = gap + 'px';
         }
-        tickAges();
-        setInterval(tickAges, 1000);
-        setInterval(() => addRow(next(), true), TICK_MS);
-    }).catch(() => { /* no feed data — leave section hidden */ });
+        function center(i, animate) {
+            const x = viewport.clientWidth/2 - (i*(slideW+gap) + slideW/2);
+            track.style.transition = animate ? `transform ${ANIM_MS}ms cubic-bezier(.5,0,.2,1)` : 'none';
+            track.style.transform = `translateX(${x}px)`;
+            slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        }
+        function advance() {
+            active++;
+            center(active, true);
+            if (active === real) {                 // reached first clone → snap back
+                setTimeout(() => { active = 0; center(0, false); }, ANIM_MS + 40);
+            }
+        }
+
+        measure(); center(0, false);
+        let timer = setInterval(advance, ADVANCE_MS);
+        window.addEventListener('resize', () => { measure(); center(active, false); });
+        viewport.addEventListener('mouseenter', () => clearInterval(timer));
+        viewport.addEventListener('mouseleave', () => { timer = setInterval(advance, ADVANCE_MS); });
+    }).catch(() => { /* no data — leave section hidden */ });
 })();
