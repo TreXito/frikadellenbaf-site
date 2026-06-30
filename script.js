@@ -62,15 +62,17 @@ document.querySelectorAll('.screenshot-card img').forEach(img => {
 
 // ── Big-flips carousel ────────────────────────────────────
 // A 16:9 banner reel of real 5M+ flips (flips.json, anonymized). The active
-// banner is centered with the neighbours peeking on either side, and it slides
-// to the next on an interval — seamless infinite loop via cloned slides.
+// banner is centered with the neighbours peeking on either side. It auto-
+// advances every 5s (with a fill bar showing the countdown) and can be dragged
+// / swiped left-right on touch or mouse. Seamless infinite loop via clones on
+// both ends. Responsive from phones to ultrawide.
 (function () {
     const section = document.getElementById('live');
     const viewport = document.getElementById('carousel');
     const track = document.getElementById('ctrack');
     if (!section || !viewport || !track) return;
 
-    const ADVANCE_MS = 4200, ANIM_MS = 650, CLONES = 2;
+    const CYCLE_MS = 5000, ANIM_MS = 600, CLONES = 2;
     // True SkyBlock rarity colours for the item name (readable on dark).
     const RCOLOR = { common:'#f5f5f5', uncommon:'#5cff5c', rare:'#5b8cff', epic:'#c45bff',
         legendary:'#ffb627', mythic:'#ff66e0', divine:'#4fe0ff', special:'#ff6b6b',
@@ -116,37 +118,95 @@ document.querySelectorAll('.screenshot-card img').forEach(img => {
         for (let i = data.length-1; i>0; i--){ const j = Math.floor(Math.random()*(i+1)); [data[i],data[j]]=[data[j],data[i]]; }
 
         const real = data.length;
-        data.forEach(f => track.appendChild(makeSlide(f)));
-        for (let k = 0; k < CLONES; k++) track.appendChild(makeSlide(data[k]));  // seamless wrap
+        // Clones on BOTH ends so dragging either direction always reveals a neighbour.
+        const head = data.slice(-CLONES), tail = data.slice(0, CLONES);
+        [...head, ...data, ...tail].forEach(f => track.appendChild(makeSlide(f)));
         const slides = Array.from(track.children);
         section.hidden = false;
 
-        let active = 0, slideW = 0, gap = 24;
+        // Progress bar (fills over CYCLE_MS, then advances).
+        const bar = document.createElement('div'); bar.className = 'cs-bar';
+        const fill = document.createElement('i'); bar.appendChild(fill);
+        viewport.appendChild(bar);
+
+        let active = CLONES, slideW = 0, gap = 24;
         function measure() {
             const vw = viewport.clientWidth;
-            slideW = Math.min(470, Math.round(vw * 0.62));
-            gap = Math.max(12, Math.round(slideW * 0.05));
+            // Phones: card takes most of the width (slim peeks). Desktop/ultrawide:
+            // capped so it never balloons, peeks stay generous.
+            slideW = vw < 600 ? Math.round(vw * 0.84)
+                              : Math.min(540, Math.round(vw * 0.5));
+            gap = Math.max(10, Math.round(slideW * 0.05));
             slides.forEach(s => s.style.width = slideW + 'px');
             track.style.gap = gap + 'px';
+            bar.style.width = slideW + 'px';
         }
+        function restX(i) { return viewport.clientWidth/2 - (i*(slideW+gap) + slideW/2); }
         function center(i, animate) {
-            const x = viewport.clientWidth/2 - (i*(slideW+gap) + slideW/2);
             track.style.transition = animate ? `transform ${ANIM_MS}ms cubic-bezier(.5,0,.2,1)` : 'none';
-            track.style.transform = `translateX(${x}px)`;
+            track.style.transform = `translateX(${restX(i)}px)`;
             slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
         }
-        function advance() {
-            active++;
+        function settle() {
+            // Jump from a clone to its real twin without animation, after the slide finishes.
+            if (active >= CLONES + real) { active -= real; center(active, false); }
+            else if (active < CLONES)   { active += real; center(active, false); }
+        }
+        function go(dir) {                          // dir: +1 next, -1 prev
+            active += dir;
             center(active, true);
-            if (active === real) {                 // reached first clone → snap back
-                setTimeout(() => { active = 0; center(0, false); }, ANIM_MS + 40);
-            }
+            elapsed = 0; fill.style.width = '0%';
+            setTimeout(settle, ANIM_MS + 30);
         }
 
-        measure(); center(0, false);
-        let timer = setInterval(advance, ADVANCE_MS);
+        measure(); center(active, false);
         window.addEventListener('resize', () => { measure(); center(active, false); });
-        viewport.addEventListener('mouseenter', () => clearInterval(timer));
-        viewport.addEventListener('mouseleave', () => { timer = setInterval(advance, ADVANCE_MS); });
+
+        // ── auto-advance with a fill bar (rAF so pause/drag freeze it cleanly) ──
+        let elapsed = 0, last = performance.now(), hovered = false, dragging = false;
+        function frame(now) {
+            const dt = now - last; last = now;
+            if (!hovered && !dragging) {
+                elapsed += dt;
+                fill.style.width = Math.min(100, elapsed / CYCLE_MS * 100) + '%';
+                if (elapsed >= CYCLE_MS) go(1);
+            }
+            requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+        viewport.addEventListener('mouseenter', () => { hovered = true; });
+        viewport.addEventListener('mouseleave', () => { hovered = false; });
+
+        // ── drag / swipe (pointer events: works for touch + mouse) ──
+        let startX = 0, startY = 0, dragDX = 0, baseX = 0, decided = false;
+        viewport.addEventListener('pointerdown', e => {
+            dragging = true; decided = false; dragDX = 0;
+            startX = e.clientX; startY = e.clientY; baseX = restX(active);
+            track.style.transition = 'none';
+        });
+        viewport.addEventListener('pointermove', e => {
+            if (!dragging) return;
+            const dx = e.clientX - startX, dy = e.clientY - startY;
+            if (!decided) {
+                if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+                if (Math.abs(dy) > Math.abs(dx)) { dragging = false; return; } // vertical → let page scroll
+                decided = true;
+                try { viewport.setPointerCapture(e.pointerId); } catch (_) {}
+                viewport.classList.add('grabbing');
+            }
+            dragDX = dx;
+            track.style.transform = `translateX(${baseX + dx}px)`;
+        });
+        function endDrag() {
+            if (!dragging) return;
+            dragging = false; viewport.classList.remove('grabbing');
+            if (!decided) return;
+            const threshold = Math.max(40, slideW * 0.18);
+            if (dragDX <= -threshold) go(1);
+            else if (dragDX >= threshold) go(-1);
+            else { center(active, true); elapsed = 0; fill.style.width = '0%'; }
+        }
+        viewport.addEventListener('pointerup', endDrag);
+        viewport.addEventListener('pointercancel', endDrag);
     }).catch(() => { /* no data — leave section hidden */ });
 })();
