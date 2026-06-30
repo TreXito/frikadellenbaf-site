@@ -3,157 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frikadellen BAF — Bazaar &amp; Auction Flipper</title>
-    <meta name="description" content="A Coflnet-powered flipper that macros Auction House &amp; Bazaar with fast buy speeds, automatic selling, and order management — built in Rust 🦀">
+    <title>Frikadellen BAF — Auction &amp; Bazaar Flipper for Hypixel SkyBlock</title>
+    <meta name="description" content="A Coflnet-powered flipper that macros the Auction House &amp; Bazaar with sub-second buys, automatic selling, Discord control and live profit tracking. Built in Rust.">
 
-    <!-- Open Graph (Discord, WhatsApp, Facebook, etc.) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://auctionflipper.bz">
-    <meta property="og:title" content="Frikadellen BAF — Bazaar &amp; Auction Flipper">
-    <meta property="og:description" content="Coflnet-powered Auction House &amp; Bazaar flipper macro for Hypixel SkyBlock — fast buying, automatic selling, order management. Built in Rust 🦀">
-    <meta property="og:image" content="https://img.youtube.com/vi/6zNrmi9TlLw/maxresdefault.jpg">
-    <meta property="og:image:width" content="1280">
-    <meta property="og:image:height" content="720">
+    <meta property="og:title" content="Frikadellen BAF — Auction &amp; Bazaar Flipper">
+    <meta property="og:description" content="Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock — sub-second buying, automatic selling, Discord control, live profit. Built in Rust.">
+    <meta property="og:image" content="https://auctionflipper.bz/assets/legendary-flips.png">
     <meta property="og:site_name" content="Frikadellen BAF">
-
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Frikadellen BAF — Bazaar &amp; Auction Flipper">
-    <meta name="twitter:description" content="Coflnet-powered Auction House &amp; Bazaar flipper macro for Hypixel SkyBlock — fast buying, automatic selling, order management. Built in Rust 🦀">
-    <meta name="twitter:image" content="https://img.youtube.com/vi/6zNrmi9TlLw/maxresdefault.jpg">
+    <meta name="twitter:title" content="Frikadellen BAF — Auction &amp; Bazaar Flipper">
+    <meta name="twitter:description" content="Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock. Built in Rust.">
+    <meta name="twitter:image" content="https://auctionflipper.bz/assets/legendary-flips.png">
+    <meta name="theme-color" content="#0a0b10">
 
-    <!-- Theme color for Discord sidebar -->
-    <meta name="theme-color" content="#6c5ce7">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23f5b942' stroke='%23b8841f' stroke-width='6'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%237a5410' font-family='monospace' font-weight='bold'>$</text></svg>">
 </head>
 <body>
 
 <!-- ── Navigation ─────────────────────────────────────────────── -->
 <nav id="navbar">
     <div class="nav-container">
-        <a href="#" class="logo"><span>Frikadellen</span> BAF</a>
+        <a href="#" class="logo"><span class="coin">◎</span> Frikadellen<span class="logo-baf">BAF</span></a>
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#screenshots">Screenshots</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#config">Configuration</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
             <li><a href="#install">Install</a></li>
-            <li><a href="https://discord.gg/42DvX6T9jh" class="btn-nav" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://discord.gg/42DvX6T9jh" class="btn-nav" target="_blank" rel="noopener">Discord →</a></li>
         </ul>
     </div>
 </nav>
 
 <!-- ── Hero ────────────────────────────────────────────────────── -->
 <header id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <h1>Frikadellen <span class="accent">BAF</span></h1>
-        <p class="tagline">A Coflnet-powered flipper that macros Auction House &amp; Bazaar with fast buy speeds, automatic selling, and order management — built in Rust&nbsp;🦀</p>
-        <div class="hero-buttons">
-            <a href="#install" class="btn btn-primary">Get Started</a>
-            <a href="https://github.com/TreXito/frikadellen-baf-121" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+        <div class="hero-copy">
+            <span class="kicker"><span class="kicker-dot"></span> Hypixel SkyBlock · Coflnet-powered · Rust</span>
+            <h1>Flip the Auction&nbsp;House<br>and Bazaar <span class="accent">on autopilot.</span></h1>
+            <p class="tagline">Frikadellen BAF snipes underpriced BINs in milliseconds, relists at target, runs your bazaar orders, and reports every coin — controllable from a web panel <em>or</em> straight from Discord.</p>
+            <div class="hero-buttons">
+                <a href="#install" class="btn btn-primary">Get started</a>
+                <a href="#screenshots" class="btn btn-ghost">See it in action</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-value">&lt;100<span class="unit">ms</span></span><span class="stat-label">Buy path</span></div>
+                <div class="stat"><span class="stat-value">24/7</span><span class="stat-label">Hands-free</span></div>
+                <div class="stat"><span class="stat-value">🦀</span><span class="stat-label">Built in Rust</span></div>
+            </div>
         </div>
-        <div class="hero-stats">
-            <div class="stat"><span class="stat-value">v3.0</span><span class="stat-label">Latest</span></div>
-            <div class="stat"><span class="stat-value">Rust</span><span class="stat-label">Powered</span></div>
-            <div class="stat"><span class="stat-value">AGPLv3</span><span class="stat-label">License</span></div>
-        </div>
+
+        <!-- Live flip-ticker mock — shows the product, not an abstract glow -->
+        <aside class="flip-ticker" aria-label="Example flip notification">
+            <div class="ticker-head">
+                <span class="ticker-tag">LEGENDARY FLIP</span>
+                <span class="ticker-live"><span class="pulse"></span> live</span>
+            </div>
+            <div class="ticker-item">Heroic Hyperion <span class="stars">✪✪✪✪✪</span></div>
+            <div class="ticker-rows">
+                <div class="trow"><span>Bought</span><b class="mono">600.0M</b></div>
+                <div class="trow"><span>Target</span><b class="mono">726.9M</b></div>
+                <div class="trow profit"><span>Profit</span><b class="mono">+108.7M <small>(18.1%)</small></b></div>
+            </div>
+            <div class="ticker-foot">
+                <span><i class="lt">⚡</i> 161ms</span>
+                <span><i class="lt">🔎</i> Sniper Median</span>
+            </div>
+        </aside>
     </div>
-    <div class="scroll-hint" aria-hidden="true">
-        <span>↓</span>
-    </div>
+    <a href="#features" class="scroll-hint" aria-hidden="true"><span>scroll</span><span class="line"></span></a>
 </header>
 
-<!-- ── Video Showcase ──────────────────────────────────────────── -->
-<section id="showcase">
+<!-- ── Demo video ──────────────────────────────────────────────── -->
+<section id="demo" class="demo">
     <div class="container">
-        <h2 class="section-title">See It In Action</h2>
-        <p class="section-subtitle">Watch the macro flip in real-time.</p>
         <div class="video-wrapper">
             <iframe
                 src="https://www.youtube-nocookie.com/embed/6zNrmi9TlLw?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=6zNrmi9TlLw&amp;rel=0"
-                title="Frikadellen BAF Showcase"
-                style="border:none"
+                title="Frikadellen BAF showcase"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 referrerpolicy="no-referrer-when-downgrade"
                 allowfullscreen
             ></iframe>
         </div>
-        <p class="video-fallback">
-            Video not loading? <a href="https://www.youtube.com/watch?v=6zNrmi9TlLw" target="_blank" rel="noopener">Watch on YouTube ↗</a>
-        </p>
+        <p class="video-fallback">Video not loading? <a href="https://www.youtube.com/watch?v=6zNrmi9TlLw" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
     </div>
 </section>
 
 <!-- ── Features ────────────────────────────────────────────────── -->
 <section id="features">
     <div class="container">
-        <h2 class="section-title">Features</h2>
-        <p class="section-subtitle">Everything you need to flip smarter, faster, and automatically.</p>
-
-        <div class="features-grid">
-
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Fast Auction House Buying</h3>
-                <p>Sub-second BIN purchases powered by Coflnet sniper data. Fastbuy mode skips confirmation windows for maximum speed.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Automatic Selling &amp; Relisting</h3>
-                <p>Purchased items are automatically relisted at the target price. Sold auctions are claimed and profits tracked in real-time.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Bazaar Flip Macro</h3>
-                <p>Automated bazaar buy &amp; sell order placement, fill tracking, stale order cancellation, and profit-taking — fully hands-free.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Multi-Account Rotation</h3>
-                <p>Comma-separate your usernames and set a switch timer. The macro automatically rotates between accounts on a schedule.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🌐</div>
-                <h3>Web Control Panel</h3>
-                <p>Built-in web dashboard to pause/resume, toggle AH &amp; Bazaar flips, view inventory, manage auctions, switch accounts, and chat — all from your browser.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔔</div>
-                <h3>Discord Webhooks</h3>
-                <p>Rich embed notifications for every purchase, sale, and profit update — complete with item names, prices, and buy-speed metrics.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>Smart Order Management</h3>
-                <p>Automatic collection of filled orders, cancellation of stale orders, and partial-fill detection — no coins left on the table.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Built-in Safety</h3>
-                <p>GUI watchdog auto-closes stuck windows, packet-rate limiting prevents kicks, and graceful error recovery keeps the bot running 24/7.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h3>Profit Tracking</h3>
-                <p>Real-time profit logging for both AH flips and bazaar orders with buy cost tracking, tax calculations, and session summaries.</p>
-            </div>
-
+        <div class="section-head">
+            <span class="sec-num">01</span>
+            <h2 class="section-title">Everything, automated</h2>
+            <p class="section-subtitle">One binary that buys, sells, manages orders, and never sleeps.</p>
         </div>
 
-        <!-- ── Full Feature List ──────────────────────────────── -->
+        <div class="features-grid">
+            <article class="feature-card">
+                <span class="fc-index">01</span>
+                <h3>Sub-second AH sniping</h3>
+                <p>Coflnet sniper data drives BIN purchases on a fast path that pre-clicks Confirm before the window even renders.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">02</span>
+                <h3>Auto sell &amp; relist</h3>
+                <p>Bought items are relisted at the target price, sold auctions are claimed the moment Coflnet signals, profit logged live.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">03</span>
+                <h3>Hands-free Bazaar</h3>
+                <p>Places buy &amp; sell orders, tracks fills, collects, cancels stale orders, and takes profit — entirely automatic.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">04</span>
+                <h3>Discord control</h3>
+                <p>Link with a one-time code, then run <code>/list</code>, <code>/auctions</code>, <code>/pause</code>, <code>/profit</code> and more — no port forwarding.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">05</span>
+                <h3>Web control panel</h3>
+                <p>Pause/resume, toggle AH &amp; Bazaar, list items, manage auctions and orders, switch accounts, and chat — from any browser.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">06</span>
+                <h3>Ping-aware bed timing</h3>
+                <p>Measures real latency to Hypixel and leads bed clicks by your ping so they land exactly as the grace period ends.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">07</span>
+                <h3>Multi-account rotation</h3>
+                <p>Comma-separate usernames and set a timer; the macro rotates accounts on schedule and transfers Coflnet licenses.</p>
+            </article>
+            <article class="feature-card">
+                <span class="fc-index">08</span>
+                <h3>Built to stay up</h3>
+                <p>Auto-reconnect, a GUI watchdog that frees stuck windows, packet-rate limiting, and a prioritized command queue.</p>
+            </article>
+        </div>
+
+        <!-- Full Feature List -->
         <div class="feature-list-section">
-            <h3 class="feature-list-title">Complete Feature List</h3>
+            <h3 class="feature-list-title">The complete list</h3>
             <div class="feature-list-grid">
                 <div class="feature-list-col">
                     <h4>Auction House</h4>
@@ -163,9 +163,9 @@
                         <li>Automatic relisting at target price</li>
                         <li>Sold auction auto-claiming</li>
                         <li>Auction cancellation support</li>
-                        <li>Grace-period bed timing</li>
-                        <li>Configurable buy speed tuning</li>
-                        <li>AH listing limit detection</li>
+                        <li>Ping-aware grace-period bed timing</li>
+                        <li>Configurable buy-speed tuning</li>
+                        <li>AH listing-limit detection</li>
                     </ul>
                 </div>
                 <div class="feature-list-col">
@@ -182,15 +182,15 @@
                     </ul>
                 </div>
                 <div class="feature-list-col">
-                    <h4>Management</h4>
+                    <h4>Control</h4>
                     <ul class="feature-list">
                         <li>Web control panel (real-time)</li>
+                        <li>Central Discord backend &amp; commands</li>
                         <li>Multi-account rotation</li>
                         <li>Discord webhook notifications</li>
                         <li>In-game chat from browser</li>
                         <li>Inventory viewer with item icons</li>
-                        <li>Active auctions dashboard</li>
-                        <li>Bazaar orders dashboard</li>
+                        <li>Auctions &amp; bazaar dashboards</li>
                         <li>Anonymize mode for streaming</li>
                     </ul>
                 </div>
@@ -198,13 +198,13 @@
                     <h4>Reliability</h4>
                     <ul class="feature-list">
                         <li>Auto-reconnect on disconnect</li>
-                        <li>GUI watchdog (5s auto-close)</li>
+                        <li>GUI watchdog (auto-close stuck windows)</li>
                         <li>Packet-rate limiting</li>
-                        <li>Command queue with priorities</li>
+                        <li>Prioritized command queue</li>
                         <li>AH flip preemption for bazaar</li>
                         <li>Startup order cleanup</li>
                         <li>Cookie/booster detection</li>
-                        <li>Persistent order state (JSON)</li>
+                        <li>Persistent order state</li>
                     </ul>
                 </div>
             </div>
@@ -215,30 +215,33 @@
 <!-- ── Screenshots ─────────────────────────────────────────────── -->
 <section id="screenshots">
     <div class="container">
-        <h2 class="section-title">Screenshots</h2>
-        <p class="section-subtitle">See what the macro looks like in action.</p>
+        <div class="section-head">
+            <span class="sec-num">02</span>
+            <h2 class="section-title">See it running</h2>
+            <p class="section-subtitle">The web panel, the Discord integration, and the public flip feed.</p>
+        </div>
 
         <div class="screenshot-grid">
-            <div class="screenshot-card">
-                <div class="screenshot-label">Web Panel — Controls &amp; Dashboard</div>
+            <figure class="screenshot-card span-2">
+                <figcaption class="screenshot-label">Web Panel — Controls &amp; Dashboard</figcaption>
                 <img src="assets/web-panel1.png" loading="lazy" alt="Web control panel Controls tab: status, pause/claim controls, accounts, and inventory">
-            </div>
-            <div class="screenshot-card">
-                <div class="screenshot-label">Web Panel — Auctions, Bazaar &amp; Chat</div>
+            </figure>
+            <figure class="screenshot-card span-2">
+                <figcaption class="screenshot-label">Web Panel — Auctions, Bazaar &amp; Chat</figcaption>
                 <img src="assets/web-panel2.png" loading="lazy" alt="Web control panel showing active auctions with item tooltips, bazaar orders, and live chat">
-            </div>
-            <div class="screenshot-card">
-                <div class="screenshot-label">Discord Integration</div>
+            </figure>
+            <figure class="screenshot-card">
+                <figcaption class="screenshot-label">Discord Integration</figcaption>
                 <img src="assets/discord-integration.png" loading="lazy" alt="Controlling the bot from Discord: /leaderboard, /bots, /status and /list slash commands">
-            </div>
-            <div class="screenshot-card">
-                <div class="screenshot-label">Public Big-Flips Feed</div>
+            </figure>
+            <figure class="screenshot-card">
+                <figcaption class="screenshot-label">Public Big-Flips Feed</figcaption>
                 <img src="assets/legendary-flips.png" loading="lazy" alt="Discord big-flips channel showing Legendary and Divine flip notifications with profit, buy speed and finder">
-            </div>
-            <div class="screenshot-card">
-                <div class="screenshot-label">Web Panel — Login</div>
+            </figure>
+            <figure class="screenshot-card">
+                <figcaption class="screenshot-label">Web Panel — Login</figcaption>
                 <img src="assets/login.png" loading="lazy" alt="Login screen for the web control panel">
-            </div>
+            </figure>
         </div>
     </div>
 </section>
@@ -246,36 +249,39 @@
 <!-- ── How It Works ────────────────────────────────────────────── -->
 <section id="how-it-works">
     <div class="container">
-        <h2 class="section-title">How It Works</h2>
-        <p class="section-subtitle">From flip detection to profit — fully automated.</p>
+        <div class="section-head">
+            <span class="sec-num">03</span>
+            <h2 class="section-title">From signal to profit</h2>
+            <p class="section-subtitle">Four steps, then it runs itself.</p>
+        </div>
 
         <div class="steps">
             <div class="step">
-                <div class="step-number">1</div>
+                <div class="step-number">01</div>
                 <div class="step-content">
                     <h3>Connect</h3>
-                    <p>Log in with your Microsoft account. The macro connects to Hypixel SkyBlock and opens a WebSocket to Coflnet's flip feed.</p>
+                    <p>Log in with your Microsoft account. The macro joins SkyBlock and opens a WebSocket to Coflnet's flip feed.</p>
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">2</div>
+                <div class="step-number">02</div>
                 <div class="step-content">
                     <h3>Detect</h3>
-                    <p>Coflnet streams underpriced auctions and bazaar margins in real-time. The macro evaluates each opportunity instantly.</p>
+                    <p>Coflnet streams underpriced auctions and bazaar margins in real time; each opportunity is evaluated instantly.</p>
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">3</div>
+                <div class="step-number">03</div>
                 <div class="step-content">
                     <h3>Purchase</h3>
-                    <p>BIN auctions are bought with fastbuy speed. Bazaar orders are placed, tracked, and managed automatically.</p>
+                    <p>BINs are bought on the fast path; bazaar orders are placed, tracked, and managed automatically.</p>
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">4</div>
+                <div class="step-number">04</div>
                 <div class="step-content">
-                    <h3>Sell &amp; Profit</h3>
-                    <p>Items are automatically relisted at target prices. Sold auctions are claimed and profits reported via Discord webhooks.</p>
+                    <h3>Sell &amp; report</h3>
+                    <p>Items relist at target, sold auctions are claimed, and every flip is reported to Discord with live profit.</p>
                 </div>
             </div>
         </div>
@@ -285,10 +291,17 @@
 <!-- ── Configuration ───────────────────────────────────────────── -->
 <section id="config">
     <div class="container">
-        <h2 class="section-title">Configuration</h2>
-        <p class="section-subtitle">Customize everything in <code>config.toml</code>.</p>
+        <div class="section-head">
+            <span class="sec-num">04</span>
+            <h2 class="section-title">Tune everything</h2>
+            <p class="section-subtitle">Plain <code>config.toml</code> — or edit live in the web panel.</p>
+        </div>
 
         <div class="config-block">
+            <div class="terminal-header">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="terminal-title">config.toml</span>
+            </div>
             <pre><code><span class="c"># Minecraft account(s) — comma-separated for multi-account</span>
 <span class="k">ingame_name</span> = <span class="s">"YourUsername"</span>
 
@@ -313,20 +326,36 @@
 <!-- ── Install ─────────────────────────────────────────────────── -->
 <section id="install">
     <div class="container">
-        <h2 class="section-title">Installation</h2>
-        <p class="section-subtitle">Up and running in under a minute on a Linux VPS.</p>
-
-        <div class="install-tabs">
-            <button type="button" class="tab active" data-tab="release">From Releases</button>
-            <button type="button" class="tab" data-tab="loader">Using Loader</button>
+        <div class="section-head">
+            <span class="sec-num">05</span>
+            <h2 class="section-title">Running in a minute</h2>
+            <p class="section-subtitle">One Linux VPS, three commands. The loader keeps itself updated.</p>
         </div>
 
-        <div class="install-content active" id="tab-release">
+        <div class="install-tabs">
+            <button type="button" class="tab active" data-tab="loader">Loader (recommended)</button>
+            <button type="button" class="tab" data-tab="release">Standalone</button>
+        </div>
+
+        <div class="install-content active" id="tab-loader">
             <div class="terminal">
                 <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="terminal-title">bash — Linux VPS (auto-updating)</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="prompt">$</span> <span class="cmd">wget</span> https://github.com/TreXito/frikadellen-baf-121/releases/latest/download/FrikadellenBAF-loader-linux-x86_64</p>
+                    <p><span class="prompt">$</span> <span class="cmd">chmod</span> +x FrikadellenBAF-loader-linux-x86_64</p>
+                    <p><span class="prompt">$</span> <span class="cmd">./FrikadellenBAF-loader-linux-x86_64</span></p>
+                </div>
+            </div>
+            <p class="loader-note">The loader downloads and runs the latest version on every start. Wrap it in <code>screen</code> to keep it alive 24/7.</p>
+        </div>
+
+        <div class="install-content" id="tab-release">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                     <span class="terminal-title">bash — Linux VPS</span>
                 </div>
                 <div class="terminal-body">
@@ -335,23 +364,11 @@
                     <p><span class="prompt">$</span> <span class="cmd">./frikadellen_baf-linux-x86_64</span></p>
                 </div>
             </div>
+            <p class="loader-note">Windows &amp; macOS builds are on the <a href="https://github.com/TreXito/frikadellen-baf-121/releases" target="_blank" rel="noopener">releases page</a>.</p>
         </div>
 
-        <div class="install-content" id="tab-loader">
-            <div class="terminal">
-                <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="terminal-title">bash — Linux VPS (Loader)</span>
-                </div>
-                <div class="terminal-body">
-                    <p><span class="prompt">$</span> <span class="cmd">wget</span> https://github.com/TreXito/frikadellen-baf-121/releases/latest/download/FrikadellenBAF-loader-linux-x86_64</p>
-                    <p><span class="prompt">$</span> <span class="cmd">chmod</span> +x FrikadellenBAF-loader-linux-x86_64</p>
-                    <p><span class="prompt">$</span> <span class="cmd">./FrikadellenBAF-loader-linux-x86_64</span></p>
-                </div>
-            </div>
-            <p class="loader-note">The loader automatically downloads and runs the latest version.</p>
+        <div class="install-cta">
+            <a href="https://github.com/TreXito/frikadellen-baf-121#readme" class="btn btn-ghost" target="_blank" rel="noopener">Full setup guide (rent a VPS → run)</a>
         </div>
     </div>
 </section>
@@ -360,17 +377,17 @@
 <footer>
     <div class="container footer-content">
         <div class="footer-brand">
-            <span class="logo">Frikadellen BAF</span>
-            <p>Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock</p>
+            <span class="logo"><span class="coin">◎</span> Frikadellen<span class="logo-baf">BAF</span></span>
+            <p>Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock.</p>
         </div>
-        <div class="footer-links">
+        <nav class="footer-links" aria-label="Footer">
             <a href="https://auctionflipper.bz" target="_blank" rel="noopener">auctionflipper.bz</a>
             <a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a>
             <a href="https://discord.gg/42DvX6T9jh" target="_blank" rel="noopener">Discord</a>
             <a href="https://github.com/TreXito/frikadellen-baf-121/releases" target="_blank" rel="noopener">Releases</a>
-        </div>
-        <p class="footer-copy">&copy; 2026 <a href="https://trexito.com" target="_blank" rel="noopener">TreXito</a> &middot; AGPLv3 License</p>
+        </nav>
     </div>
+    <p class="footer-copy">© 2026 <a href="https://trexito.com" target="_blank" rel="noopener">TreXito</a> · AGPLv3 · Not affiliated with Hypixel or Mojang</p>
 </footer>
 
 <script src="script.js"></script>
