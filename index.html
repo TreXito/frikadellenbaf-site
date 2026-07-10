@@ -24,13 +24,13 @@
     <meta name="twitter:title" content="Frikadellen BAF — Auction &amp; Bazaar Flipper">
     <meta name="twitter:description" content="Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock. Built in Rust.">
     <meta name="twitter:image" content="https://auctionflipper.bz/assets/og.png">
-    <meta name="theme-color" content="#f5b942">
+    <meta name="theme-color" content="#0f0d09">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23f5b942' stroke='%23b8841f' stroke-width='6'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%237a5410' font-family='monospace' font-weight='bold'>$</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23e9a83a' stroke='%23b57e1f' stroke-width='6'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%231c1204' font-family='monospace' font-weight='bold'>$</text></svg>">
 
     <!-- Structured data: software app + FAQ (rich results) -->
     <script type="application/ld+json">
@@ -73,10 +73,9 @@
         <a href="#" class="logo"><span class="coin">◎</span> Frikadellen<span class="logo-baf">BAF</span></a>
         <ul class="nav-links">
             <li><a href="#features">Features</a></li>
-            <li><a href="#screenshots">Screenshots</a></li>
+            <li><a href="#live">Flips</a></li>
             <li><a href="#how-it-works">How it works</a></li>
             <li><a href="#install">Install</a></li>
-            <li><a href="#faq">FAQ</a></li>
             <li><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a></li>
             <li><a href="https://discord.gg/42DvX6T9jh" class="btn-nav" target="_blank" rel="noopener">Discord →</a></li>
         </ul>
@@ -85,24 +84,23 @@
 
 <!-- ── Hero ────────────────────────────────────────────────────── -->
 <header id="hero">
-    <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="container hero-inner">
         <div class="hero-copy">
-            <span class="kicker"><span class="kicker-dot"></span> Hypixel SkyBlock · Coflnet-powered · Rust</span>
-            <h1>Flip the Auction&nbsp;House<br>and Bazaar <span class="accent">on autopilot.</span></h1>
+            <span class="kicker">Hypixel SkyBlock · Coflnet-powered · Rust</span>
+            <h1>Flip the Auction&nbsp;House and Bazaar <span class="accent">on autopilot.</span></h1>
             <p class="tagline">Frikadellen BAF snipes underpriced BINs in milliseconds, relists at target, runs your bazaar orders, and reports every coin — controllable from a web panel <em>or</em> straight from Discord.</p>
             <div class="hero-buttons">
-                <a href="#install" class="btn btn-primary">Get started</a>
-                <a href="#screenshots" class="btn btn-ghost">See it in action</a>
+                <a href="#install" class="btn btn-primary">Get started →</a>
+                <a href="#demo" class="btn btn-ghost">Watch it flip</a>
             </div>
             <div class="hero-stats">
                 <div class="stat"><span class="stat-value">&lt;100<span class="unit">ms</span></span><span class="stat-label">Buy path</span></div>
                 <div class="stat"><span class="stat-value">24/7</span><span class="stat-label">Hands-free</span></div>
-                <div class="stat"><span class="stat-value">🦀</span><span class="stat-label">Built in Rust</span></div>
+                <div class="stat"><span class="stat-value">Free</span><span class="stat-label">AGPLv3 · Rust</span></div>
             </div>
         </div>
 
-        <!-- Live flip-ticker mock — shows the product, not an abstract glow -->
+        <!-- A real flip, presented as a ledger entry -->
         <aside class="flip-ticker" aria-label="Example flip notification">
             <div class="ticker-head">
                 <span class="ticker-tag">LEGENDARY FLIP</span>
@@ -110,18 +108,22 @@
             </div>
             <div class="ticker-item">Heroic Hyperion <span class="stars">✪✪✪✪✪</span></div>
             <div class="ticker-rows">
-                <div class="trow"><span>Bought</span><b class="mono">600.0M</b></div>
-                <div class="trow"><span>Target</span><b class="mono">726.9M</b></div>
-                <div class="trow profit"><span>Profit</span><b class="mono">+108.7M <small>(18.1%)</small></b></div>
+                <div class="trow"><span>Bought</span><b>600.0M</b></div>
+                <div class="trow"><span>Target</span><b>726.9M</b></div>
+                <div class="trow profit"><span>Profit</span><b>+108.7M <small>(18.1%)</small></b></div>
             </div>
             <div class="ticker-foot">
-                <span><i class="lt">⚡</i> 161ms</span>
-                <span><i class="lt">🔎</i> Sniper Median</span>
+                <span>buy speed <b>161ms</b></span>
+                <span>finder <b>Sniper Median</b></span>
             </div>
         </aside>
     </div>
-    <a href="#features" class="scroll-hint" aria-hidden="true"><span>scroll</span><span class="line"></span></a>
 </header>
+
+<!-- ── Ticker tape: real flips ─────────────────────────────────── -->
+<div class="tape" id="tape" hidden aria-hidden="true">
+    <div class="tape-track" id="tapetrack"></div>
+</div>
 
 <!-- ── Demo video ──────────────────────────────────────────────── -->
 <section id="demo" class="demo">
@@ -140,17 +142,30 @@
     </div>
 </section>
 
-<!-- ── Live flips ──────────────────────────────────────────────── -->
-<section id="live" class="live" hidden>
+<!-- ── The ledger: big flips ───────────────────────────────────── -->
+<section id="live" hidden>
     <div class="container">
-        <div class="section-head live-head">
-            <span class="live-badge"><span class="live-dot"></span> LIVE</span>
-            <h2 class="section-title">Big flips, rolling in</h2>
-            <p class="section-subtitle">A live, anonymized reel of the <strong>5M+ profit</strong> snipes BAF lands — item, profit, target and buy speed.</p>
+        <div class="section-head">
+            <span class="sec-num">01 · The ledger</span>
+            <h2 class="section-title">Big flips, on the record</h2>
+            <p class="section-subtitle">An anonymized sample of the <strong>5M+ profit</strong> snipes BAF lands — item, price paid, target, profit and buy speed. Real numbers, not marketing.</p>
         </div>
-        <div class="carousel" id="carousel" aria-label="Recent big flips">
-            <div class="carousel-track" id="ctrack"></div>
+        <div class="ledger-wrap">
+            <table class="ledger" aria-label="Recent big flips">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th class="l-finder-col">Finder</th>
+                        <th class="num">Bought</th>
+                        <th class="num">Target</th>
+                        <th class="num">Profit</th>
+                        <th class="num">Speed</th>
+                    </tr>
+                </thead>
+                <tbody id="ledger-body"></tbody>
+            </table>
         </div>
+        <span class="live-note"><span class="pulse"></span> pulled from the public big-flips feed · anonymized</span>
     </div>
 </section>
 
@@ -158,7 +173,7 @@
 <section id="features">
     <div class="container">
         <div class="section-head">
-            <span class="sec-num">01</span>
+            <span class="sec-num">02 · Features</span>
             <h2 class="section-title">Everything, automated</h2>
             <p class="section-subtitle">One binary that buys, sells, manages orders, and never sleeps.</p>
         </div>
@@ -271,30 +286,30 @@
 <section id="screenshots">
     <div class="container">
         <div class="section-head">
-            <span class="sec-num">02</span>
+            <span class="sec-num">03 · Screenshots</span>
             <h2 class="section-title">See it running</h2>
             <p class="section-subtitle">The web panel, the Discord integration, and the public flip feed.</p>
         </div>
 
         <div class="screenshot-grid">
             <figure class="screenshot-card span-2">
-                <figcaption class="screenshot-label">Web Panel — Controls &amp; Dashboard</figcaption>
+                <figcaption class="screenshot-label">web panel — controls &amp; dashboard</figcaption>
                 <img src="assets/web-panel1.png" loading="lazy" alt="Web control panel Controls tab: status, pause/claim controls, accounts, and inventory">
             </figure>
             <figure class="screenshot-card span-2">
-                <figcaption class="screenshot-label">Web Panel — Auctions, Bazaar &amp; Chat</figcaption>
+                <figcaption class="screenshot-label">web panel — auctions, bazaar &amp; chat</figcaption>
                 <img src="assets/web-panel2.png" loading="lazy" alt="Web control panel showing active auctions with item tooltips, bazaar orders, and live chat">
             </figure>
             <figure class="screenshot-card">
-                <figcaption class="screenshot-label">Discord Integration</figcaption>
+                <figcaption class="screenshot-label">discord integration</figcaption>
                 <img src="assets/discord-integration.png" loading="lazy" alt="Controlling the bot from Discord: /leaderboard, /bots, /status and /list slash commands">
             </figure>
             <figure class="screenshot-card">
-                <figcaption class="screenshot-label">Public Big-Flips Feed</figcaption>
+                <figcaption class="screenshot-label">public big-flips feed</figcaption>
                 <img src="assets/legendary-flips.png" loading="lazy" alt="Discord big-flips channel showing Legendary and Divine flip notifications with profit, buy speed and finder">
             </figure>
             <figure class="screenshot-card">
-                <figcaption class="screenshot-label">Web Panel — Login</figcaption>
+                <figcaption class="screenshot-label">web panel — login</figcaption>
                 <img src="assets/login.png" loading="lazy" alt="Login screen for the web control panel">
             </figure>
         </div>
@@ -305,35 +320,35 @@
 <section id="how-it-works">
     <div class="container">
         <div class="section-head">
-            <span class="sec-num">03</span>
+            <span class="sec-num">04 · How it works</span>
             <h2 class="section-title">From signal to profit</h2>
             <p class="section-subtitle">Four steps, then it runs itself.</p>
         </div>
 
         <div class="steps">
             <div class="step">
-                <div class="step-number">01</div>
+                <span class="step-number">01</span>
                 <div class="step-content">
                     <h3>Connect</h3>
                     <p>Log in with your Microsoft account. The macro joins SkyBlock and opens a WebSocket to Coflnet's flip feed.</p>
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">02</div>
+                <span class="step-number">02</span>
                 <div class="step-content">
                     <h3>Detect</h3>
                     <p>Coflnet streams underpriced auctions and bazaar margins in real time; each opportunity is evaluated instantly.</p>
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">03</div>
+                <span class="step-number">03</span>
                 <div class="step-content">
                     <h3>Purchase</h3>
                     <p>BINs are bought on the fast path; bazaar orders are placed, tracked, and managed automatically.</p>
                 </div>
             </div>
             <div class="step">
-                <div class="step-number">04</div>
+                <span class="step-number">04</span>
                 <div class="step-content">
                     <h3>Sell &amp; report</h3>
                     <p>Items relist at target, sold auctions are claimed, and every flip is reported to Discord with live profit.</p>
@@ -347,15 +362,15 @@
 <section id="config">
     <div class="container">
         <div class="section-head">
-            <span class="sec-num">04</span>
+            <span class="sec-num">05 · Configuration</span>
             <h2 class="section-title">Tune everything</h2>
             <p class="section-subtitle">Plain <code>config.toml</code> — or edit live in the web panel.</p>
         </div>
 
         <div class="config-block">
             <div class="terminal-header">
-                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                 <span class="terminal-title">config.toml</span>
+                <span class="terminal-copy">toml</span>
             </div>
             <pre><code><span class="c"># Minecraft account(s) — comma-separated for multi-account</span>
 <span class="k">ingame_name</span> = <span class="s">"YourUsername"</span>
@@ -382,7 +397,7 @@
 <section id="install">
     <div class="container">
         <div class="section-head">
-            <span class="sec-num">05</span>
+            <span class="sec-num">06 · Install</span>
             <h2 class="section-title">Running in a minute</h2>
             <p class="section-subtitle">One Linux VPS, three commands. The loader keeps itself updated.</p>
         </div>
@@ -395,7 +410,6 @@
         <div class="install-content active" id="tab-loader">
             <div class="terminal">
                 <div class="terminal-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                     <span class="terminal-title">bash — Linux VPS (auto-updating)</span>
                 </div>
                 <div class="terminal-body">
@@ -410,7 +424,6 @@
         <div class="install-content" id="tab-release">
             <div class="terminal">
                 <div class="terminal-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                     <span class="terminal-title">bash — Linux VPS</span>
                 </div>
                 <div class="terminal-body">
@@ -432,7 +445,7 @@
 <section id="faq">
     <div class="container">
         <div class="section-head">
-            <span class="sec-num">06</span>
+            <span class="sec-num">07 · FAQ</span>
             <h2 class="section-title">SkyBlock macro FAQ</h2>
             <p class="section-subtitle">The common questions about the Auction House &amp; Bazaar flipping macro.</p>
         </div>
@@ -477,6 +490,7 @@
             <a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a>
             <a href="https://discord.gg/42DvX6T9jh" target="_blank" rel="noopener">Discord</a>
             <a href="https://github.com/TreXito/frikadellen-baf-121/releases" target="_blank" rel="noopener">Releases</a>
+            <a href="https://trexito.com" target="_blank" rel="noopener">trexito.com</a>
         </nav>
     </div>
     <p class="footer-copy">© 2026 <a href="https://trexito.com" target="_blank" rel="noopener">TreXito</a> · AGPLv3 · Not affiliated with Hypixel or Mojang</p>
