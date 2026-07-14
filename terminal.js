@@ -172,28 +172,52 @@
   })();
   if (!reduce) setTimeout(landFlip, 900);
 
-  /* ── auto-play fallback (until the scroll driver takes over) ─────────── */
-  let driven = false, autoTimer = null;
-  function startAuto() {
-    if (driven) return;
-    let n = 1;
-    autoTimer = setInterval(() => {
-      if (driven) { clearInterval(autoTimer); return; }
-      n++;
-      if (n > NB) { while (body.firstChild) body.removeChild(body.firstChild); shownBlocks = 0; n = 1; }
-      renderBlocks(n);
-    }, 1500);
+  /* ── auto-play (mobile / non-pinned): realistic, randomised pacing ───── */
+  const MAXLINES = 38;
+  let driven = false, autoOn = false;
+  function appendCap(html) {
+    appendLine(html);
+    while (body.children.length > MAXLINES) body.removeChild(body.firstChild);
+    body.scrollTop = body.scrollHeight;
   }
+  function idleScan() {
+    const rate = rint(2400, 4200).toLocaleString('en-US');
+    const tail = chance(0.45) ? ', ' + rint(120, 380) + ' filtered' : '…';
+    return [step(L(S('t-cofl', '[COFL]') + ' scanning ' + S('t-cmd', rate) + ' auctions/s' + tail, true))];
+  }
+  function nextScene() {
+    const r = Math.random();
+    if (r < 0.38) return buyOk();
+    if (r < 0.61) return sold();
+    if (r < 0.76) return bazaar();
+    if (r < 0.88) return buyMiss();
+    return idleScan();
+  }
+  function autoTick() {
+    if (driven || !autoOn) return;
+    const scene = nextScene();
+    let i = 0;
+    (function emit() {
+      if (driven || !autoOn) return;
+      if (i < scene.length) {
+        appendCap(scene[i].html); i++;
+        setTimeout(emit, rint(110, 560));          // lines of one action trickle in
+      } else {
+        setTimeout(autoTick, rint(1500, 4800));    // then a pause before the next action
+      }
+    })();
+  }
+  function startAuto() { if (driven) return; autoOn = true; setTimeout(autoTick, 750); }
 
   window.BAFTerm = {
     blocks: NB,
     showBlocks: renderBlocks,
     seekProgress: (p) => renderBlocks(1 + clamp01(p) * (NB - 1)),
-    takeOver: () => { driven = true; if (autoTimer) clearInterval(autoTimer); },
+    takeOver: () => { driven = true; autoOn = false; },
   };
 
-  /* boot: show the startup block, then auto-play unless a scroll driver claims it */
+  /* boot: show the startup block, then auto-play (per-line) unless a scroll driver claims it */
   renderBlocks(1);
-  if (!reduce) setTimeout(startAuto, 800);
+  if (!reduce) setTimeout(startAuto, 850);
   else renderBlocks(Math.min(4, NB)); /* reduced motion: a few actions, static */
 })();
