@@ -124,7 +124,7 @@
   const fmt = (n) => { n = +n || 0; const a = Math.abs(n); return a >= 1e9 ? (n / 1e9).toFixed(2) + 'B' : a >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : a >= 1e3 ? (n / 1e3).toFixed(0) + 'K' : '' + n; };
   const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  fetch('flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
+  fetch('../flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
     if (!Array.isArray(data) || data.length < 3) return;
 
     /* ── ticker tape: a rolling strip of the biggest real flips ────────── */

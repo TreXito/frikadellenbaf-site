@@ -2,7 +2,7 @@
 
 [trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/) share one hand-built green-phosphor design system: no framework, static HTML/CSS/JS.
 
-**Current state (Oct 2026 rework):** the reference-led muted redesign was replaced with a restoration of the phosphor live-terminal design. The BAF hero is a scroll-driven terminal replay built from real log lines and the real anonymized flips in `flips.json`; its footer counters total what the replay has actually shown, next to the static public-log totals (117 flips · 1.77B). The personal site uses an honest `whoami` terminal, real project entries and a real panel screenshot. The README ban advisory stays visible on both sites.
+**Current state (Oct 2026):** root serves the restored gold-on-obsidian design (the older live-flips look), with two honest touches: the README ban-wave advisory banner and real ~50ms buy-path numbers. A de-vibecoded rebuild of the later green-phosphor terminal design lives at `/preview-green/` for comparison: its terminal replays real log lines from `flips.json` and its footer counters total what the replay has actually shown.
 
 The notes below document the earlier coordinated redesign (kept for the fact/source table).
 

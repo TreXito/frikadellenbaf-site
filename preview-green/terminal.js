@@ -45,7 +45,7 @@
     { n: 'Waxed Soulweaver Gloves ✪✪✪✪✪',      p: 10000000,  t: 19703258,  f: 'Sniper' },
     { n: 'Auspicious Jasper Drill X',          p: 65000000,  t: 84743776,  f: 'Sniper Median' },
   ];
-  fetch('flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
+  fetch('../flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
     if (!Array.isArray(data) || !data.length) return;
     AH = data.filter(f => f && f.item && f.price > 0 && f.target > f.price)
              .map(f => ({ n: f.item, p: f.price, t: f.target, f: f.finder || 'Sniper' }));
