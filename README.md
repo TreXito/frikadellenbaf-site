@@ -6,7 +6,7 @@ Start with [HANDOVER.md](HANDOVER.md) for the exact stopping point and next acti
 
 ## Intent
 
-Make the sites feel like a real personal portfolio and a related project study: artistic, nerdy, specific and modest. Keep the useful information and direct source links. Avoid generic agency copy, simulated live figures and unverified earnings claims.
+Make trexito.com a personal portfolio and auctionflipper.bz a recognisable Minecraft SkyBlock automation project site. Both sites use dark palettes only. Keep the useful information and direct source links. Avoid generic agency copy, simulated live figures and unverified earnings claims.
 
 - `TreXito/perssite`: Philipp Podobri's personal portfolio, with selected projects, background and contact links.
 - `TreXito/frikadellenbaf-site`: a deeper look at Frikadellen BAF, with system notes, actual interface screenshots, source and setup.
@@ -27,7 +27,7 @@ The old personal page contained fixed uptime, flip and profit figures without a 
 
 ## Design and implementation
 
-The personal site uses a warm paper palette, serif editorial type and annotated project sketches. The BAF site uses the same typography with a darker green palette and project artifacts. Both are static HTML/CSS sites with no build step. The new BAF page does not load the old JavaScript files; they remain in the repository until cleanup is reviewed.
+The personal site uses a dark slate palette, serif editorial type and annotated project sketches. The BAF site uses a dark SkyBlock inventory interface with pixel type, lime accents, module slots and real panel screenshots. Neither site has a bright mode. Both are static HTML/CSS sites with no build step. The new BAF page does not load the old JavaScript files; they remain in the repository until cleanup is reviewed.
 
 Changed in `perssite`: `index.html`, `frikadellen-baf.html`, new `styles.css`, `favicon.svg`, `og.svg`, and regenerated `og.png`.
 
@@ -45,7 +45,7 @@ Each site has a root `CNAME` file for its custom domain. Both repositories have 
 4. [x] Draft the personal portfolio and BAF project detail page.
 5. [x] Draft the BAF project site with honest copy, screenshots and setup path.
 6. [x] Push both review branches to GitHub.
-7. [ ] Review desktop and mobile layouts, links, image crops, metadata, accessibility and current release instructions. Fix issues found.
+7. [x] Review desktop and mobile layouts, links, image crops, metadata, accessibility and current release instructions. Fix issues found.
 8. [ ] Merge to `main` after review and verify both live domains and Pages action results.
 
 ## Progress log
@@ -55,3 +55,5 @@ Each site has a root `CNAME` file for its custom domain. Both repositories have 
 - 2026-10-12T19:45:13Z engine=codex model=gpt-6-astra: Drafted both redesigns and generated matching social preview images. Visual review and publication remain.
 - 2026-10-12T19:54:03Z engine=codex model=gpt-6-astra: Authenticated GitHub CLI and pushed both `portfolio/true-portfolio` branches. Updated the handoff with branch links. Visual review and merging remain.
 - 2026-10-12T19:55:39Z engine=codex model=gpt-6-astra: Added a dedicated handover to both branches for continuation from the Paseo server. Remaining work is visual review and deployment verification.
+- 2026-10-12T20:12:17Z engine=codex model=gpt-6.1-sol: Reviewed all three pages at 1440, 768, 390 and 320 px; fixed BAF mobile navigation, contrast, and a timeline label. Browser checks found zero overflow, failed images or request failures; axe found zero WCAG A/AA violations. Keyboard checks confirmed visible skip-link focus and reduced-motion behavior on all three pages. Local link and metadata audit passed. The current BAF README warns against use due to recent bans, so both BAF pages now reflect that guidance. The BAF sitemap date now matches the review. GitHub release API confirms the Linux loader asset in build-20261008-db7a4f1. Publishing still needs GitHub write access on this server.
+- 2026-10-12T20:21:10Z engine=codex model=gpt-6.1-sol: Reworked auctionflipper.bz into a dark SkyBlock inventory interface at the owner's request and changed trexito.com to dark only. Regenerated both social previews and verified 12 page/viewport combinations with zero overflow or failed images. Static audit found no local asset or metadata problems; axe reported zero confirmed WCAG A/AA violations and keyboard checks passed. GitHub write access remains unresolved on this server.

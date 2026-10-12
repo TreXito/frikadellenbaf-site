@@ -1,39 +1,46 @@
 # Portfolio handover, 2026-10-12
 
-Next action: review both portfolio/true-portfolio branches on desktop and mobile, then fix concrete issues before merging.
+Next action: restore GitHub write access on the Paseo server, push the reviewed `portfolio/true-portfolio` branches, merge them to `main`, then verify both GitHub Pages deployments and live domains.
 
 ## Where to continue
 
-- Personal site: https://github.com/TreXito/perssite/tree/portfolio/true-portfolio
-- BAF project site: https://github.com/TreXito/frikadellenbaf-site/tree/portfolio/true-portfolio
-- The same README.md in each branch contains the plan, claim sources and progress log. Current state: 6 of 8 plan steps done.
+- Personal site checkout: `/home/orc/websites/perssite`, [GitHub branch](https://github.com/TreXito/perssite/tree/portfolio/true-portfolio).
+- BAF project site checkout: `/home/orc/websites/frikadellenbaf-site`, [GitHub branch](https://github.com/TreXito/frikadellenbaf-site/tree/portfolio/true-portfolio).
+- The same `README.md` in each branch contains the plan, claim sources and progress log. Current state: 7 of 8 plan steps done.
+- Shared Orc task: `/home/orc/.agents/tasks/finish-portfolio-review-and-github-pages-publica.md`.
 
-Clone each repository on the Paseo server, switch to portfolio/true-portfolio, and read README.md before editing. Both branches are pushed and tracking their GitHub remotes. The public main branches still serve the old sites.
+Both local checkouts are on `portfolio/true-portfolio`. The public `main` branches still serve the old sites.
 
 ## What is done
 
 1. Reworked trexito.com into a personal portfolio for Philipp Podobri / TreXito, with real background, selected projects and verified links.
-2. Reworked its Frikadellen BAF detail page as a project note. Reworked auctionflipper.bz as a related project site with the system, real interface screenshots, source and setup.
+2. Reworked its Frikadellen BAF detail page as a project note. Reworked auctionflipper.bz into a dark SkyBlock inventory interface with the system, real panel screenshots, source and setup.
 3. Removed fabricated uptime and earnings figures and the simulated live terminal from visible copy. Generated new favicon and social preview artwork for both sites.
-4. Kept each root CNAME file intact. Earlier successful GitHub Pages runs show the built-in pages build and deployment action publishes main for both repositories. No custom workflow was added.
+4. Preserved both root `CNAME` files and the existing built-in GitHub Pages publication path.
+5. Reviewed all three pages in Chromium at 1440, 768, 390 and 320 px. Fixed the BAF header overflow at 320 px, improved accent color contrast, corrected a timeline accessibility label and removed em dashes from page titles. Both sites now use dark palettes only, and new social preview images match them.
+6. Updated both BAF pages to reflect the current project README's October 2026 advice against use because of recent bans. Verified that the Linux loader command resolves to an asset in the latest release, `build-20261008-db7a4f1`.
+
+## Verification
+
+- Browser check: 12 page/viewport combinations, zero horizontal overflow, zero failed images and zero request failures.
+- axe checks: zero confirmed WCAG A/AA violations on all three pages at desktop and mobile widths. Diagram and hero text over patterned backgrounds required manual contrast review.
+- Keyboard checks: first Tab reveals the skip link with a visible outline, and reduced-motion mode disables smooth scrolling on all three pages.
+- Local link, image, metadata and heading audit: zero problems. Other checked public links returned HTTP 200; LinkedIn returned its automated-client status 999, so that profile cannot be verified by this client.
 
 ## Decisions to preserve
 
-- Tone: specific, curious and modest. The owner asked for an artistic, nerdy feel without bragging or generic portfolio claims. No em dashes in site copy.
-- Identity and history: the owner supplied the LinkedIn profile and confirmed the SAATBAU LINZ apprenticeship, 42 Wels study and HTL Leonding background. Powerlifting is one brief personal note. See README.md for links and dates.
-- BAF metrics: the existing flips.json contains candidate or target values without dates or sale confirmation. Do not call them realised profit. The owner offered backend data, but no verified, safe export was available in this session. A dated anonymized example is optional.
-- The sites are static HTML/CSS with no build step. The BAF repo still contains old JavaScript and flips.json, but the new page does not load them. Do not delete them before reviewing whether anything else uses them.
+- Tone: specific, curious and modest. The owner asked for an artistic, nerdy personal site and a Minecraft cheats aesthetic for the BAF site. The chosen direction is dark SkyBlock inventory UI, with no bright mode on either site. No em dashes in site copy.
+- Identity and history: the owner supplied the LinkedIn profile and confirmed the SAATBAU LINZ apprenticeship, 42 Wels study and HTL Leonding background. Powerlifting is one brief personal note. See `README.md` for links and dates.
+- BAF metrics: the existing `flips.json` contains candidate or target values without dates or sale confirmation. Do not call them realised profit. A dated anonymized example is optional only when its source and definition are clear.
+- The sites are static HTML/CSS with no build step. The BAF repo still contains old JavaScript and `flips.json`, but the new page does not load them. Do not delete them before reviewing whether anything else uses them.
 
 ## Remaining work
 
-1. Review both pages visually at desktop and mobile sizes. Check typography, overflow, screenshot crops and generated og.png previews.
-2. Check internal and external links, image alt text, keyboard focus, reduced motion, page titles and descriptions. Recheck the Linux loader command and current release files against the BAF repository.
-3. Make fixes on the review branches and update the README progress log.
-4. Merge to main only after review, then inspect the GitHub Pages action result and load trexito.com and auctionflipper.bz to confirm the deployed pages and domains.
+1. Push reviewed branch commits from both local checkouts. On this server, `gh auth status` reports the TreXito token invalid and GitHub SSH denies the available public keys. Restore an authorized GitHub write credential first.
+2. Merge both reviewed branches to `main`. Preserve `CNAME` and the existing Pages configuration.
+3. Check the GitHub Pages action result in each repository, then load trexito.com and auctionflipper.bz and confirm the redesigned pages and custom domains are live. Mark plan step 8 complete in both READMEs.
 
-## Files changed
+## Files changed in review
 
-- perssite: index.html, frikadellen-baf.html, styles.css, favicon.svg, og.svg, og.png, README.md.
-- frikadellenbaf-site: index.html, style.css, favicon.svg, og.svg, assets/og.png, README.md.
-
-No visual browser review or live deployment verification of the redesigned pages has happened yet.
+- perssite: `index.html`, `frikadellen-baf.html`, `styles.css`, `og.svg`, `og.png`, `README.md`, `HANDOVER.md`.
+- frikadellenbaf-site: `index.html`, `style.css`, `favicon.svg`, `og.svg`, `assets/og.png`, `sitemap.xml`, `README.md`, `HANDOVER.md`.
