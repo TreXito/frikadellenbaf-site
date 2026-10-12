@@ -10,6 +10,14 @@
   const elP = document.getElementById('tf-profit');
   const elF = document.getElementById('tf-flips');
   const elT = document.getElementById('tf-uptime');
+  const elLI = document.getElementById('tf-logi');
+  const elLN = document.getElementById('tf-logname');
+  const elLS = document.getElementById('tf-logsum');
+  const RCOLOR = {
+    common: '#dfe7e0', uncommon: '#5cff5c', rare: '#5b8cff', epic: '#c45bff',
+    legendary: '#ffb627', mythic: '#ff66e0', divine: '#4fe0ff', special: '#ff6b6b',
+    very_special: '#ff6b6b', supreme: '#ff6b6b', ultimate: '#ff4d4d',
+  };
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── helpers ─────────────────────────────────────────────────────────── */
@@ -32,23 +40,29 @@
   /* Embedded seed so the terminal works before / without the fetch.
      Same shape as flips.json rows: n=ame, price, target, finder. */
   let AH = [
-    { n: 'Hegemony Artifact',                   p: 500000000, t: 648758876, f: 'Sniper Median' },
-    { n: 'Heroic Hyperion ✪✪✪✪✪',             p: 600000000, t: 726900000, f: 'Sniper Median' },
-    { n: 'Soul Whip',                          p: 16000000,  t: 25900000,  f: 'Sniper Median' },
-    { n: 'Jaded Glossy Mineral Chestplate',    p: 30000000,  t: 40000000,  f: 'Sniper' },
-    { n: "Ancient Necron's Leggings ✪✪✪✪✪",    p: 23000000,  t: 36191576,  f: 'Sniper' },
-    { n: 'Red Claw Artifact',                  p: 15000000,  t: 21000000,  f: 'Sniper Median' },
-    { n: 'Eternal Hoof',                       p: 15000000,  t: 22910865,  f: 'Sniper' },
-    { n: "Ancient Storm's Leggings ✪✪✪✪✪",     p: 26000000,  t: 34194260,  f: 'Sniper Median' },
-    { n: 'Mossy Fermento Helmet',              p: 37000000,  t: 44302710,  f: 'Sniper Median' },
-    { n: 'Ancient Warden Helmet',              p: 111000000, t: 124998999, f: 'Sniper' },
-    { n: 'Waxed Soulweaver Gloves ✪✪✪✪✪',      p: 10000000,  t: 19703258,  f: 'Sniper' },
-    { n: 'Auspicious Jasper Drill X',          p: 65000000,  t: 84743776,  f: 'Sniper Median' },
+    { n: 'Ancient Crown of Avarice',           p: 2648911,   t: 2221700000, f: 'Sniper' },
+    { n: "Divan's Alloy",                      p: 1200000,   t: 1320000000, f: 'Sniper' },
+    { n: 'Heroic Hyperion ✪✪✪✪✪➋',            p: 1494000,   t: 1298900000, f: 'CraftCost' },
+    { n: '[Lvl 200] Golden Dragon',            p: 88000000,  t: 1167999000, f: 'Sniper Median' },
+    { n: 'Heroic Hyperion ✪✪✪✪✪',             p: 1060000,   t: 1071699999, f: 'Sniper Median' },
+    { n: 'Ray of Helios',                      p: 400000,    t: 1015699000, f: 'Sniper Median' },
+    { n: 'Fabled Atomsplit Katana',            p: 1150000,   t: 814600000,  f: 'Sniper Median' },
+    { n: 'Crown of Avarice',                   p: 1000000,   t: 714700000,  f: 'Sniper' },
+    { n: 'Heroic Hyperion ✪✪✪✪✪',             p: 500000000, t: 1150500000, f: 'Sniper' },
+    { n: 'Hegemony Artifact',                  p: 500000000, t: 648758876,  f: 'Sniper Median' },
+    { n: 'Soul Whip',                          p: 16000000,  t: 25900000,   f: 'Sniper Median' },
+    { n: 'Ancient Warden Helmet',              p: 111000000, t: 124998999,  f: 'Sniper' },
   ];
-  fetch('../flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
+  LOG = AH.map(f => ({ n: f.n, profit: f.t - f.p, col: null }))
+          .sort((a, b) => b.profit - a.profit);
+  fetch('flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
     if (!Array.isArray(data) || !data.length) return;
     AH = data.filter(f => f && f.item && f.price > 0 && f.target > f.price)
              .map(f => ({ n: f.item, p: f.price, t: f.target, f: f.finder || 'Sniper' }));
+    LOG = data.filter(f => f && f.item && f.profit > 0)
+              .map(f => ({ n: f.item, profit: f.profit, col: RCOLOR[f.rarity] || null }))
+              .sort((a, b) => b.profit - a.profit);
+    wi = 0; wsum = 0;
   }).catch(() => { /* seed pool stays */ });
 
   const RELIST = [
@@ -68,16 +82,39 @@
   let disp = 0;             // display value chasing `shown`
   let lastBuy = null;       // pairing: sell the thing we just bought at ITS target
 
+  /* ── log walker: steps through the REAL public log, always moving ──────
+     One entry every ~2-3s, item in its true rarity colour, Σ counting up to
+     the full tracked total. Loops. Nothing invented: LOG is flips.json. */
+  let LOG = [];
+  let wi = 0, wsum = 0, dsum = 0, dsumCur = 0;
+  function walkerTick() {
+    if (!LOG.length) { setTimeout(walkerTick, 900); return; }
+    if (wi >= LOG.length) { /* hold the final totals, then walk again */
+      setTimeout(() => { wi = 0; wsum = 0; walkerTick(); }, 6000);
+      return;
+    }
+    const f = LOG[wi]; wi += 1; wsum += f.profit;
+    if (elLI) elLI.textContent = wi + '/' + LOG.length;
+    if (elLN) { elLN.textContent = f.n; elLN.style.color = f.col || ''; }
+    dsum = wsum;
+    setTimeout(walkerTick, rint(1800, 3200));
+  }
+
   function paintStats() {
     if (elP) elP.textContent = '+' + short(disp);
     if (elF) elF.textContent = String(shownFlips);
+    if (elLS) elLS.textContent = '+' + short(dsumCur);
   }
   (function raf() {
     disp += (shown - disp) * 0.1;
     if (Math.abs(shown - disp) < 1) disp = shown;
+    dsumCur += (dsum - dsumCur) * 0.09;
+    if (Math.abs(dsum - dsumCur) < 1) dsumCur = dsum;
     paintStats();
     requestAnimationFrame(raf);
   })();
+  if (!reduce) setTimeout(walkerTick, 1200);
+  else if (LOG.length) { wi = LOG.length; dsum = dsumCur = LOG.reduce((s, f) => s + f.profit, 0); }
 
   /* ── replay clock — honest: seconds the replay has been running ───────── */
   const boot = Date.now();
@@ -99,7 +136,7 @@
       step(L(BAF + ' Connected to Coflnet flip feed')),
       step(L(BAF + ' Claimed sold auctions from last session')),
       step(L(BAF + ' ' + S('t-ok', '✅ Ready to flip.'))),
-      step(L('public big-flips log: ' + S('t-key', AH.length + ' entries loaded'), true)),
+      step(L('public big-flips log: ' + S('t-key', LOG.length + ' entries loaded'), true)),
     ];
   }
   function buyOk() {

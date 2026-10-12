@@ -2,7 +2,7 @@
 
 [trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/) share one hand-built green-phosphor design system: no framework, static HTML/CSS/JS.
 
-**Current state (Oct 2026):** root serves the restored gold-on-obsidian design (the older live-flips look), with two honest touches: the README ban-wave advisory banner and real ~50ms buy-path numbers. A de-vibecoded rebuild of the later green-phosphor terminal design lives at `/preview-green/` for comparison: its terminal replays real log lines from `flips.json` and its footer counters total what the replay has actually shown.
+**Current state (Oct 2026):** both sites run the green-phosphor design, rebuilt without the invented figures the old version had. The BAF hero terminal replays real log lines; its footer counters total what the replay has actually shown, and a log walker steps through the real flips.json. `flips.json` itself comes from the LIVE baf-backend on TrueNAS (the `events` table in `baf.sqlite`): 400 realized sales, buy+sell paired, bought price / sale price / realized profit / buySpeedMs / finder. Refresh it with `tools/export-flips.py` (needs `ssh truenas` key access). Backend totals at last export: 37,805 profitable sales · 232.3B realized · biggest single flip +2.16B. The README ban-wave advisory stays as a slim banner.
 
 The notes below document the earlier coordinated redesign (kept for the fact/source table).
 
