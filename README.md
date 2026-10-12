@@ -1,8 +1,12 @@
-# TreXito portfolio rework
+# TreXito portfolio
 
-This documents the coordinated redesign of [trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/). The reviewed work is published from `main` in [perssite](https://github.com/TreXito/perssite) and [frikadellenbaf-site](https://github.com/TreXito/frikadellenbaf-site).
+[trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/) share one hand-built green-phosphor design system: no framework, static HTML/CSS/JS.
 
-See [HANDOVER.md](HANDOVER.md) for review decisions and publication evidence.
+**Current state (Oct 2026 rework):** the reference-led muted redesign was replaced with a restoration of the phosphor live-terminal design. The BAF hero is a scroll-driven terminal replay built from real log lines and the real anonymized flips in `flips.json`; its footer counters total what the replay has actually shown, next to the static public-log totals (117 flips · 1.77B). The personal site uses an honest `whoami` terminal, real project entries and a real panel screenshot. The README ban advisory stays visible on both sites.
+
+The notes below document the earlier coordinated redesign (kept for the fact/source table).
+
+See [HANDOVER.md](HANDOVER.md) for earlier review decisions and publication evidence.
 
 ## Intent
 

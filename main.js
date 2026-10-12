@@ -126,6 +126,18 @@
 
   fetch('flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
     if (!Array.isArray(data) || data.length < 3) return;
+
+    /* ── ticker tape: a rolling strip of the biggest real flips ────────── */
+    const tape = document.getElementById('tape');
+    const tapeTrack = document.getElementById('tape-track');
+    if (tape && tapeTrack) {
+      const strip = data.slice().sort((a, b) => b.profit - a.profit).slice(0, 16).map(f =>
+        '<span class="tp"><span class="tp-item">' + esc(f.item) + '</span>' +
+        '<span class="tp-profit">+' + fmt(f.profit) + '</span></span>').join('');
+      tapeTrack.innerHTML = strip + strip;   /* doubled for the seamless -50% loop */
+      tape.hidden = false;
+    }
+
     const section = document.getElementById('flips');
     const rail = document.getElementById('fs-rail');
     const card = document.getElementById('fs-card');

@@ -1,31 +1,386 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0e1410">
-  <title>Frikadellen BAF / Hypixel SkyBlock client</title>
-  <meta name="description" content="Frikadellen BAF is an open source Rust client for Hypixel SkyBlock Auction House and Bazaar automation. Explore its real web panel, source and current project guidance.">
-  <link rel="canonical" href="https://auctionflipper.bz/">
-  <meta property="og:type" content="website"><meta property="og:url" content="https://auctionflipper.bz/"><meta property="og:title" content="Frikadellen BAF / Hypixel SkyBlock client"><meta property="og:description" content="Auction House, Bazaar and a window into the bot. An open source Rust project by TreXito."><meta property="og:image" content="https://auctionflipper.bz/assets/og.png?v=3">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frikadellen BAF · Hypixel SkyBlock Auction House &amp; Bazaar Macro</title>
+    <meta name="description" content="Frikadellen BAF is a free, open-source Hypixel SkyBlock macro that flips the Auction House and Bazaar automatically: ~50ms BIN sniping, auto-relisting, bazaar orders, Discord control. Built in Rust.">
+    <meta name="keywords" content="skyblock macro, hypixel skyblock macro, skyblock ah macro, skyblock auction house macro, skyblock bz macro, skyblock bazaar macro, auction flipper, ah flipping macro, bazaar flipping macro, coflnet macro, hypixel flipping bot, frikadellen baf">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="TreXito">
+    <link rel="canonical" href="https://auctionflipper.bz/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://auctionflipper.bz">
+    <meta property="og:title" content="Frikadellen BAF · Auction &amp; Bazaar Flipper">
+    <meta property="og:description" content="A free Hypixel SkyBlock macro that flips the Auction House and Bazaar automatically, with a web panel and Discord control. Built in Rust.">
+    <meta property="og:image" content="https://auctionflipper.bz/assets/og.png?v=3">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Frikadellen BAF">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#05080a">
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23070c0f'/><circle cx='50' cy='50' r='30' fill='none' stroke='%2339d353' stroke-width='7'/><text x='50' y='68' font-size='46' text-anchor='middle' fill='%2339d353' font-family='monospace' font-weight='bold'>❯</text></svg>">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Frikadellen BAF",
+      "alternateName": "Frikadellen BAF SkyBlock Macro",
+      "description": "A free, Coflnet-powered Hypixel SkyBlock macro that flips the Auction House and Bazaar automatically: sniping underpriced auctions, relisting at profit, and running bazaar orders 24/7, hands-free.",
+      "url": "https://auctionflipper.bz/",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Linux, Windows, macOS",
+      "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+      "author": { "@type": "Person", "name": "TreXito", "url": "https://trexito.com" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is Frikadellen BAF?", "acceptedAnswer": { "@type": "Answer", "text": "Frikadellen BAF is a Hypixel SkyBlock macro that automatically flips the Auction House and Bazaar. It uses Coflnet's flip data to snipe underpriced BIN auctions, relists them at target, runs your bazaar orders, and tracks profit. Controllable from a web panel or from Discord." } },
+        { "@type": "Question", "name": "Is it a free SkyBlock macro?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Frikadellen BAF is free and open source under the AGPLv3 license. You only need a Coflnet account for the flip feed." } },
+        { "@type": "Question", "name": "Is it safe to use right now?", "acceptedAnswer": { "@type": "Answer", "text": "Automating gameplay violates Hypixel's rules and can get your account banned. As of October 2026 the project README advises against running BAF because of recent ban waves. Read the repository's current guidance before attempting setup." } },
+        { "@type": "Question", "name": "Does it flip both the Auction House and the Bazaar?", "acceptedAnswer": { "@type": "Answer", "text": "Both, at the same time. It runs Auction House flipping (BIN sniping, auto-relisting, claiming sold auctions) and Bazaar flipping (automatic buy/sell orders, fill tracking, stale-order cancellation), and you can toggle each independently." } },
+        { "@type": "Question", "name": "What do I need to run the macro?", "acceptedAnswer": { "@type": "Answer", "text": "A Minecraft: Java Edition account, a Coflnet account, and somewhere to run it. A cheap Linux VPS near Hypixel's servers is recommended so it runs 24/7 with low latency. Windows and macOS builds are also provided." } },
+        { "@type": "Question", "name": "How fast is the auction flipping?", "acceptedAnswer": { "@type": "Answer", "text": "On a VPS near Hypixel the full buy path, from listing detection to confirm, typically lands in about 50ms. Real speed depends mostly on your latency to Hypixel, which the built-in /hypixel ping command measures." } }
+      ]
+    }
+    </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="notice"><div class="wrap notice-inner"><span>PROJECT NOTICE</span><p>As of October 2026, the README advises against using BAF because of recent bans.</p><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Read current guidance <span aria-hidden="true">↗</span></a></div></div>
-  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Frikadellen BAF home"><span class="brand-glyph" aria-hidden="true">✦</span><span>FRIKADELLEN<span>BAF</span></span></a><nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#inside">Inside the panel</a><a href="#source">Source</a></nav><a class="owner-link" href="https://trexito.com/" aria-label="TreXito portfolio"><img src="assets/cat-avatar.png" alt="TreXito’s orange cat avatar" width="32" height="32"> by TreXito <span aria-hidden="true">↗</span></a></div></header>
-  <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">HYPIXEL SKYBLOCK / OPEN SOURCE / RUST</p><h1 id="hero-title">Frikadellen<br><span>BAF.</span></h1><p class="hero-lede">Auction House, Bazaar, and a window into the bot. BAF is a headless Rust client that acts on flip data and lets you see what it is doing.</p><div class="hero-actions"><a class="button button-lime" href="#inside">See the real panel <span aria-hidden="true">↘</span></a><a class="button button-line" href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Explore the code <span aria-hidden="true">↗</span></a></div></div><figure class="hero-art"><div class="hero-art-top"><span class="pixel-mark" aria-hidden="true">▦</span><span>BAF CONTROL PANEL</span><span>PROJECT SCREENSHOT</span></div><img src="assets/web-panel1.png" alt="Actual BAF control panel showing controls, account state and Minecraft inventory" width="1500" height="950"><figcaption>STATUS / CONTROLS / INVENTORY</figcaption></figure></section>
-    <div class="ticker wrap" role="group" aria-label="Project areas"><span>AUCTION HOUSE</span><span>BAZAAR</span><span>WEB PANEL</span><span>DISCORD</span></div>
-    <section id="how-it-works" class="how-section" aria-labelledby="how-title"><div class="wrap"><div class="section-head"><p class="eyebrow">THE CLIENT</p><h2 id="how-title">More than a<br><span>buy button.</span></h2><p>BAF handles the steps around a flip, from incoming data to in-game actions and remote visibility. These parts are documented in the public repository.</p></div><div class="feature-list"><article><span class="feature-number">01</span><div><h3>Find &amp; buy</h3><p>Uses Coflnet flip opportunities to buy underpriced Auction House BIN listings.</p></div><span class="feature-tag">AUCTION HOUSE</span></article><article><span class="feature-number">02</span><div><h3>List &amp; trade</h3><p>Relists acquired items and manages Bazaar buy and sell orders, fills and collection.</p></div><span class="feature-tag">MARKET LOOP</span></article><article><span class="feature-number">03</span><div><h3>Watch &amp; control</h3><p>Shows state in a web panel and provides linked Discord users with commands and notifications.</p></div><span class="feature-tag">REMOTE VIEW</span></article></div></div></section>
-    <section id="inside" class="inside-section wrap" aria-labelledby="inside-title"><div class="section-head"><p class="eyebrow">INSIDE THE PROJECT</p><h2 id="inside-title">The actual<br><span>interface.</span></h2><p>These are project screenshots, not a simulated live feed. The panel makes a running session visible, and Discord provides another way to check in.</p></div><div class="shots"><figure class="shot shot-main"><img src="assets/web-panel1.png" alt="BAF web panel with bot status, controls, accounts and Minecraft inventory" width="1500" height="950" loading="lazy"><figcaption><span>01 / CONTROL PANEL</span><span>STATUS, CONTROLS, INVENTORY</span></figcaption></figure><figure class="shot"><img src="assets/web-panel2.png" alt="BAF web panel showing active auctions, Bazaar orders and chat" width="1500" height="950" loading="lazy"><figcaption><span>02 / MARKET VIEW</span><span>AUCTIONS &amp; ORDERS</span></figcaption></figure><figure class="shot"><img src="assets/discord-integration.png" alt="BAF Discord integration with linked bot commands" width="1782" height="1197" loading="lazy"><figcaption><span>03 / DISCORD</span><span>REMOTE COMMANDS</span></figcaption></figure></div></section>
-    <section id="source" class="source-section" aria-labelledby="source-title"><div class="wrap source-layout"><div><p class="eyebrow">SOURCE &amp; RELEASES</p><h2 id="source-title">Read first.<br><span>Run later.</span></h2><p>The current README warns against using the software because of recent bans. You can inspect the source, current documentation and published builds on GitHub. Check its latest advice before attempting setup.</p></div><div class="source-links"><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer"><span>Repository and current notice</span><span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121#features" target="_blank" rel="noopener noreferrer"><span>Documented features</span><span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121/releases/latest" target="_blank" rel="noopener noreferrer"><span>Latest releases</span><span aria-hidden="true">↗</span></a></div></div></section>
-    <section class="fine-print wrap" aria-labelledby="fine-title"><p class="eyebrow">BEFORE YOU GO</p><h2 id="fine-title">Know the trade-offs.</h2><p>Automating gameplay can violate Hypixel’s rules and lead to account penalties. Flip values are estimates, not confirmed profit until items sell. BAF is open source under AGPLv3 and is not affiliated with Hypixel, Mojang or Coflnet.</p></section>
-  </main>
-  <footer class="site-footer"><div class="wrap footer-inner"><a class="footer-owner" href="https://trexito.com/" aria-label="TreXito portfolio"><img src="assets/cat-avatar.png" alt="TreXito’s orange cat avatar" width="40" height="40"><span>Built by TreXito</span></a><div><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Source ↗</a><a href="https://trexito.com/">Portfolio ↗</a><a href="#main">Back to top ↑</a></div></div></footer>
+<div class="grid-lines" aria-hidden="true"></div>
+
+<!-- ── Project notice ─────────────────────────────────────────── -->
+<div class="notice">
+    <div class="container notice-in">
+        <span class="notice-flag">⚠ status</span>
+        <p>Oct 2026: the README advises against running BAF due to recent ban waves.</p>
+        <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">current guidance ↗</a>
+    </div>
+</div>
+
+<!-- ── Navigation ─────────────────────────────────────────────── -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo"><span class="coin">❯</span> frikadellen<span class="logo-baf">baf</span></a>
+        <ul class="nav-links">
+            <li class="nav-hide"><a href="#what">What it does</a></li>
+            <li class="nav-hide"><a href="#flips">Flips</a></li>
+            <li class="nav-hide"><a href="#panel">Panel</a></li>
+            <li class="nav-hide"><a href="#install">Install</a></li>
+            <li><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/TreXito/frikadellen-baf-121/releases" class="btn-nav" target="_blank" rel="noopener">Download →</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ── Hero: the headline scrolls away, the terminal takes over ─── -->
+<section id="scroll-hero">
+    <div class="sh-pin" id="sh-pin">
+        <div class="sh-intro" id="sh-intro">
+            <div class="intro-inner">
+                <span class="kicker">Hypixel SkyBlock · Coflnet · Rust · AGPLv3</span>
+                <h1 class="intro-title">Snipe. Relist. Collect.<br><span class="accent">Repeat.</span></h1>
+                <p class="intro-lead">Frikadellen BAF is a free, open-source macro that flips the SkyBlock Auction House and Bazaar hands-free. It buys underpriced BINs in ~50ms, relists at target, works your bazaar orders, and reports every coin to a web panel and Discord.</p>
+                <div class="hero-buttons">
+                    <a href="#install" class="btn btn-primary">Get started →</a>
+                    <a href="#flips" class="btn btn-ghost">See the log</a>
+                </div>
+                <span class="scroll-cue">scroll</span>
+            </div>
+        </div>
+        <div class="sh-stage" id="sh-stage">
+        <div class="sh-left">
+            <span class="kicker">the loop</span>
+            <div class="sh-acts" id="sh-acts">
+                <article class="sh-act">
+                    <span class="sh-step">01</span>
+                    <span class="sh-act-tag">connect</span>
+                    <h3>It boots itself.</h3>
+                    <p>Joins SkyBlock, clears stale orders from last session, claims whatever already sold, and locks onto Coflnet's live flip feed.</p>
+                </article>
+                <article class="sh-act">
+                    <span class="sh-step">02</span>
+                    <span class="sh-act-tag">snipe</span>
+                    <h3>It buys in ~50ms.</h3>
+                    <p>On a VPS near Hypixel, the whole buy path, escrow, click, confirm, is done before a human could read the price.</p>
+                </article>
+                <article class="sh-act">
+                    <span class="sh-step">03</span>
+                    <span class="sh-act-tag">relist</span>
+                    <h3>It relists at target.</h3>
+                    <p>Every buy goes back up at the target price, and sold auctions get claimed the moment Coflnet signals the sale.</p>
+                </article>
+                <article class="sh-act">
+                    <span class="sh-step">04</span>
+                    <span class="sh-act-tag">bazaar</span>
+                    <h3>It works the Bazaar too.</h3>
+                    <p>Buy and sell orders placed, filled, collected and re-priced. A second market, handled by the same binary.</p>
+                </article>
+                <article class="sh-act">
+                    <span class="sh-step">05</span>
+                    <span class="sh-act-tag">report</span>
+                    <h3>It reports every coin.</h3>
+                    <p>Each flip lands in the web panel and on Discord with item, price and profit. Then the loop starts over, 24/7.</p>
+                </article>
+            </div>
+            <div class="sh-progress" id="sh-progress" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="sh-right">
+            <div class="terminal-wrap">
+                <div class="term" role="img" aria-label="A replay of real Frikadellen BAF log lines: booting, buying underpriced auctions, relisting for profit, and running bazaar orders.">
+                    <div class="term-bar">
+                        <div class="term-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <span class="term-title"><b>frikadellen-baf</b> · real log lines</span>
+                        <span class="term-live"><span class="pulse"></span> replay</span>
+                    </div>
+                    <div class="term-body" id="term-body" aria-hidden="true"></div>
+                    <div class="term-foot">
+                        <span class="tf">shown <b id="tf-profit">+0</b></span>
+                        <span class="tf">flips <b id="tf-flips">0</b></span>
+                        <span class="tf">replay <b id="tf-uptime">0:00</b></span>
+                        <span class="sep"></span>
+                        <span class="tf amber">public log <b>117 flips · 1.77B</b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Ticker tape ────────────────────────────────────────────── -->
+<div class="tape" id="tape" hidden aria-hidden="true"><div class="tape-track" id="tape-track"></div></div>
+
+<!-- ── What it does ────────────────────────────────────────────── -->
+<section id="what">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="sec-num">01 · What it does</span>
+            <h2 class="section-title">The whole loop, handled</h2>
+            <p class="section-subtitle">Buying is the easy part. BAF also takes care of everything around a flip: recovery, relisting, order management and remote control.</p>
+        </div>
+        <div class="value-grid">
+            <article class="feature-card marks reveal">
+                <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="2.5"/></svg></div>
+                <h3>Snipes in ~50ms</h3>
+                <p>Coflnet's sniper feed flags the underpriced BIN; BAF pre-clicks Confirm and finishes the buy before the window renders.</p>
+            </article>
+            <article class="feature-card marks reveal">
+                <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
+                <h3>Runs the Bazaar too</h3>
+                <p>Places, fills, collects and re-prices buy &amp; sell orders automatically. AH and Bazaar toggle independently.</p>
+            </article>
+            <article class="feature-card marks reveal">
+                <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 2h6"/></svg></div>
+                <h3>Built to stay up</h3>
+                <p>Auto-reconnect, a GUI watchdog that frees stuck windows, packet-rate limiting and multi-account rotation.</p>
+            </article>
+            <article class="feature-card marks reveal">
+                <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 10 10"/><path d="M22 4v4h-4"/></svg></div>
+                <h3>Free &amp; open source</h3>
+                <p>AGPLv3, written in Rust, no subscription. You bring a Minecraft account, a Coflnet account and a machine.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ── Big statement ───────────────────────────────────────────── -->
+<div class="bigband reveal" aria-hidden="true">
+    <h2>IT NEVER<br>SLEEPS<span class="dot">.</span></h2>
+    <p>the auction house &amp; bazaar, worked around the clock</p>
+</div>
+
+<!-- ── Big flips: scroll through the log ───────────────────────── -->
+<section id="flips" hidden>
+    <div class="fs-pin">
+        <div class="fs-left">
+            <span class="sec-num">02 · The log</span>
+            <h2 class="section-title">The record<br>is public</h2>
+            <p class="section-subtitle">Eight of the biggest snipes on record, from the anonymized big-flips feed: item, buy price, target, ROI.</p>
+            <ol class="fs-rail" id="fs-rail"></ol>
+        </div>
+        <div class="fs-right">
+            <article class="fs-card" id="fs-card" aria-live="polite"></article>
+            <span class="live-note"><span class="pulse"></span> anonymized public feed · target is the relist price, not confirmed profit</span>
+        </div>
+    </div>
+</section>
+
+<!-- ── Demo video ──────────────────────────────────────────────── -->
+<section id="demo">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="sec-num">▶ Watch</span>
+            <h2 class="section-title">See it flip</h2>
+            <p class="section-subtitle">A recorded session: sniping, relisting and collecting, hands-free.</p>
+        </div>
+        <div class="video-wrapper reveal">
+            <iframe
+                src="https://www.youtube-nocookie.com/embed/6zNrmi9TlLw?rel=0"
+                title="Frikadellen BAF showcase"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+            ></iframe>
+        </div>
+        <p class="video-fallback">Video not loading? <a href="https://www.youtube.com/watch?v=6zNrmi9TlLw" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+    </div>
+</section>
+
+<!-- ── Screenshots ─────────────────────────────────────────────── -->
+<section id="panel">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="sec-num">03 · The panel</span>
+            <h2 class="section-title">Watch it from anywhere</h2>
+            <p class="section-subtitle">A real-time web panel and full Discord control. Check profit, pause, or list an item from your phone.</p>
+        </div>
+        <div class="screenshot-grid">
+            <figure class="screenshot-card span-2 reveal">
+                <figcaption class="screenshot-label">web panel · controls &amp; dashboard</figcaption>
+                <img src="assets/web-panel1.png" loading="lazy" alt="Web control panel: status, pause/claim controls, accounts, and inventory">
+            </figure>
+            <figure class="screenshot-card span-2 reveal">
+                <figcaption class="screenshot-label">web panel · auctions, bazaar &amp; chat</figcaption>
+                <img src="assets/web-panel2.png" loading="lazy" alt="Web control panel showing active auctions, bazaar orders, and live chat">
+            </figure>
+            <figure class="screenshot-card reveal">
+                <figcaption class="screenshot-label">discord integration</figcaption>
+                <img src="assets/discord-integration.png" loading="lazy" alt="Controlling the bot from Discord with slash commands">
+            </figure>
+            <figure class="screenshot-card reveal">
+                <figcaption class="screenshot-label">public big-flips feed</figcaption>
+                <img src="assets/legendary-flips.png" loading="lazy" alt="Discord big-flips channel showing profit notifications">
+            </figure>
+        </div>
+    </div>
+</section>
+
+<!-- ── Install ─────────────────────────────────────────────────── -->
+<section id="install">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="sec-num">04 · Install</span>
+            <h2 class="section-title">Running in a minute</h2>
+            <p class="section-subtitle">One Linux VPS, three commands. The loader keeps itself updated. Read the <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">README advisory</a> first.</p>
+        </div>
+
+        <div class="reveal">
+            <div class="install-tabs">
+                <button type="button" class="tab active" data-tab="loader">Loader (recommended)</button>
+                <button type="button" class="tab" data-tab="release">Standalone</button>
+            </div>
+
+            <div class="install-content active" id="tab-loader">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-title">bash · Linux VPS (auto-updating)</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="prompt">$</span> <span class="cmd">wget</span> https://github.com/TreXito/frikadellen-baf-121/releases/latest/download/FrikadellenBAF-loader-linux-x86_64</p>
+                        <p><span class="prompt">$</span> <span class="cmd">chmod</span> +x FrikadellenBAF-loader-linux-x86_64</p>
+                        <p><span class="prompt">$</span> <span class="cmd">./FrikadellenBAF-loader-linux-x86_64</span></p>
+                    </div>
+                </div>
+                <p class="loader-note">The loader downloads and runs the latest version on every start. Wrap it in <code>screen</code> to keep it alive 24/7.</p>
+            </div>
+
+            <div class="install-content" id="tab-release">
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-title">bash · Linux VPS</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="prompt">$</span> <span class="cmd">wget</span> https://github.com/TreXito/frikadellen-baf-121/releases/latest/download/frikadellen_baf-linux-x86_64</p>
+                        <p><span class="prompt">$</span> <span class="cmd">chmod</span> +x frikadellen_baf-linux-x86_64</p>
+                        <p><span class="prompt">$</span> <span class="cmd">./frikadellen_baf-linux-x86_64</span></p>
+                    </div>
+                </div>
+                <p class="loader-note">Windows &amp; macOS builds are on the <a href="https://github.com/TreXito/frikadellen-baf-121/releases" target="_blank" rel="noopener">releases page</a>.</p>
+            </div>
+
+            <div class="install-cta">
+                <a href="https://github.com/TreXito/frikadellen-baf-121#readme" class="btn btn-ghost" target="_blank" rel="noopener">Full setup guide (rent a VPS → run) →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────── -->
+<section id="faq">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="sec-num">05 · FAQ</span>
+            <h2 class="section-title">The essentials</h2>
+        </div>
+        <div class="faq reveal">
+            <details class="faq-item" open>
+                <summary>What is Frikadellen BAF?</summary>
+                <p>A <strong>Hypixel SkyBlock macro</strong> that flips the Auction House and Bazaar for you. It snipes underpriced BIN auctions, relists them at target, runs your bazaar orders, and tracks profit. Controllable from a web panel or straight from Discord.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is it free?</summary>
+                <p>Yes. <strong>Free and open source</strong> under the AGPLv3 license. You only need a Coflnet account for the flip data.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Is it safe to use right now?</summary>
+                <p>Automating gameplay violates Hypixel's rules and can get your account penalized. As of October 2026 the <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">project README</a> advises <strong>against</strong> running BAF because of recent ban waves. Read the repository's current guidance before attempting setup.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Does it flip the Bazaar as well?</summary>
+                <p>Both at once. <strong>Auction House</strong> (BIN sniping, auto-relisting, claiming sold auctions) and <strong>Bazaar</strong> (automatic buy/sell orders, fill tracking, stale-order cancellation). Toggle each independently.</p>
+            </details>
+            <details class="faq-item">
+                <summary>What do I need to run it?</summary>
+                <p>A Minecraft: Java Edition account, a Coflnet account, and somewhere to run it. A cheap <strong>Linux VPS</strong> near Hypixel's servers is recommended so it flips 24/7 at low latency; Windows and macOS builds are provided too. See the <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">setup guide</a>.</p>
+            </details>
+            <details class="faq-item">
+                <summary>How fast is the buy path, really?</summary>
+                <p>On a VPS near Hypixel, about <strong>50ms</strong> from detection to confirm, thanks to confirm pre-clicking. Your real speed is mostly latency to Hypixel, which the built-in <code>/hypixel ping</code> command measures.</p>
+            </details>
+            <details class="faq-item">
+                <summary>Can I control it from Discord?</summary>
+                <p>Yes. Link your bot with a one-time code, then use slash commands like <code>/list</code>, <code>/auctions</code>, <code>/pause</code>, <code>/profit</code> and <code>/leaderboard</code>. No port forwarding needed.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────────────── -->
+<footer>
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <span class="logo"><span class="coin">❯</span> frikadellen<span class="logo-baf">baf</span></span>
+            <p>Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock. Free and open source.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer">
+            <a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/TreXito/frikadellen-baf-121/releases" target="_blank" rel="noopener">Releases</a>
+            <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">README &amp; advisory</a>
+            <a href="https://trexito.com" target="_blank" rel="noopener">trexito.com</a>
+        </nav>
+    </div>
+    <p class="footer-copy">© 2026 <a href="https://trexito.com" target="_blank" rel="noopener">TreXito</a> · AGPLv3 · Not affiliated with Hypixel, Mojang or Coflnet · Target prices are relist prices, not confirmed profit</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="terminal.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
