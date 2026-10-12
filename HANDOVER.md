@@ -1,6 +1,6 @@
 # Portfolio handover, 2026-10-12
 
-Next action: restore GitHub write access on the Paseo server, push the reviewed `portfolio/true-portfolio` branches, merge them to `main`, then verify both GitHub Pages deployments and live domains.
+Next action: merge the reviewed `portfolio/true-portfolio` branches to `main`, then verify both GitHub Pages deployments and live domains.
 
 ## Where to continue
 
@@ -9,7 +9,7 @@ Next action: restore GitHub write access on the Paseo server, push the reviewed 
 - The same `README.md` in each branch contains the plan, claim sources and progress log. Current state: 7 of 8 plan steps done.
 - Shared Orc task: `/home/orc/.agents/tasks/finish-portfolio-review-and-github-pages-publica.md`.
 
-Both local checkouts are on `portfolio/true-portfolio`. The public `main` branches still serve the old sites.
+Both local checkouts are on `portfolio/true-portfolio`, and the reviewed commits are pushed to GitHub. The public `main` branches still serve the old sites.
 
 ## What is done
 
@@ -36,9 +36,8 @@ Both local checkouts are on `portfolio/true-portfolio`. The public `main` branch
 
 ## Remaining work
 
-1. Push reviewed branch commits from both local checkouts. On this server, `gh auth status` reports the TreXito token invalid and GitHub SSH denies the available public keys. Restore an authorized GitHub write credential first.
-2. Merge both reviewed branches to `main`. Preserve `CNAME` and the existing Pages configuration.
-3. Check the GitHub Pages action result in each repository, then load trexito.com and auctionflipper.bz and confirm the redesigned pages and custom domains are live. Mark plan step 8 complete in both READMEs.
+1. Merge both reviewed branches to `main`. Preserve `CNAME` and the existing Pages configuration.
+2. Check the GitHub Pages action result in each repository, then load trexito.com and auctionflipper.bz and confirm the redesigned pages and custom domains are live. Mark plan step 8 complete in both READMEs.
 
 ## Files changed in review
 
