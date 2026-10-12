@@ -35,7 +35,7 @@ Current `frikadellenbaf-site` assets include `index.html`, `style.css`, `favicon
 
 ## Reference-led revision, 2026-10-12
 
-The owner found the first published version too generic and requested Dribbble inspiration and the cat photo from the [TreXito GitHub profile](https://github.com/TreXito). The revision is on `redesign/reference-led-cat` in both repositories. It keeps both sites dark and retains the current BAF ban advisory.
+The owner found the first published version too generic and requested Dribbble inspiration and the cat photo from the [TreXito GitHub profile](https://github.com/TreXito). The revision was reviewed on `redesign/reference-led-cat` and published from `main` in both repositories. It keeps both sites dark and retains the current BAF ban advisory.
 
 - [Nicolas Meuzard's dark developer portfolio](https://dribbble.com/shots/9809111-Developer-Dark-Grid-Portfolio) informed the direct introduction and spare project presentation.
 - [Andrey Chernov's Minecraft SkyBlock concept](https://dribbble.com/shots/26621823-Minecraft-SkyBlock-Landing-Page-Server-UI-Concept) informed the use of game context and a strong project visual, without its bright palette or invented server statistics.
@@ -71,3 +71,4 @@ Each site has a root `CNAME` file for its custom domain. Both repositories have 
 - 2026-10-12T20:21:10Z engine=codex model=gpt-6.1-sol: Reworked auctionflipper.bz into a dark SkyBlock inventory interface at the owner's request and changed trexito.com to dark only. Regenerated both social previews and verified 12 page/viewport combinations with zero overflow or failed images. Static audit found no local asset or metadata problems; axe reported zero confirmed WCAG A/AA violations and keyboard checks passed. GitHub write access remains unresolved on this server.
 - 2026-10-12T20:22:35Z engine=codex model=gpt-6.1-sol: Committed the final dark designs as d60f8e3 in perssite and 6fa1509 in frikadellenbaf-site. Both review branches pushed successfully over Git HTTPS; merge and live deployment verification remain.
 - 2026-10-12T20:24:36Z engine=codex model=gpt-6.1-sol: Fast-forwarded both reviewed branches to main. GitHub Pages runs 38303882290 (perssite) and 38303882452 (frikadellenbaf-site) completed successfully. Both custom domains returned HTTP 200 for their updated HTML, dark CSS and social images; live page text matches the redesign and current ban advisory.
+- 2026-10-12T20:47:17Z engine=codex model=gpt-6.1-sol: Published the reference-led revision from review branches to main as 8aa3efa (perssite) and a6cc63e (frikadellenbaf-site). Pages runs 38306319990 and 38306320888 completed successfully. Both live domains returned HTTP 200 for updated HTML, CSS, the GitHub cat avatar, real BAF panel image and social previews.

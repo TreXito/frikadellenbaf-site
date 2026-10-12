@@ -1,6 +1,6 @@
 # Portfolio handover, 2026-10-12
 
-Status: the reference-led revision is reviewed locally on `redesign/reference-led-cat` in both repositories. Publish it through the existing GitHub Pages `main` branches, then verify both live domains.
+Status: complete. The reference-led revision is published from `main` in both repositories and verified on both custom domains.
 
 ## Current task
 
@@ -25,12 +25,11 @@ The owner said the first published sites looked generic, asked for Dribbble insp
 - Keyboard first Tab reveals a visible skip link on all pages. Reduced motion disables smooth scrolling.
 - Local links, image paths, page titles, descriptions, heading counts and image alt text passed the static audit. The current BAF README warning and release link were checked.
 
-## Publication path
+## Publication evidence
 
-1. Commit and push both `redesign/reference-led-cat` branches.
-2. Fast-forward each `main` branch after confirming it has not diverged. Preserve `CNAME`.
-3. Check both GitHub Pages action runs, then check the served HTML, CSS, cat images and social preview PNGs on trexito.com and auctionflipper.bz.
-4. Update the shared task file and matching README/HANDOVER files with final commit IDs and deployment evidence.
+1. `perssite` was fast-forwarded to commit `8aa3efa`; [GitHub Pages run 38306319990](https://github.com/TreXito/perssite/actions/runs/38306319990) succeeded.
+2. `frikadellenbaf-site` was fast-forwarded to commit `a6cc63e`; [GitHub Pages run 38306320888](https://github.com/TreXito/frikadellenbaf-site/actions/runs/38306320888) succeeded.
+3. trexito.com and auctionflipper.bz returned HTTP 200 for the new HTML, CSS, GitHub cat images, panel screenshots and social preview PNGs on 2026-10-12. Both `CNAME` values were preserved.
 
 ## Constraints
 
