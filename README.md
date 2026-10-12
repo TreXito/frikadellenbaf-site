@@ -2,6 +2,8 @@
 
 This is the handoff for a coordinated redesign of [trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/). Work is on the `portfolio/true-portfolio` branch in [perssite](https://github.com/TreXito/perssite/tree/portfolio/true-portfolio) and [frikadellenbaf-site](https://github.com/TreXito/frikadellenbaf-site/tree/portfolio/true-portfolio).
 
+Start with [HANDOVER.md](HANDOVER.md) for the exact stopping point and next actions.
+
 ## Intent
 
 Make the sites feel like a real personal portfolio and a related project study: artistic, nerdy, specific and modest. Keep the useful information and direct source links. Avoid generic agency copy, simulated live figures and unverified earnings claims.
@@ -52,3 +54,4 @@ Each site has a root `CNAME` file for its custom domain. Both repositories have 
 - 2026-10-12T19:40:06Z engine=codex model=gpt-6-astra: Confirmed personal details, public projects and successful built-in Pages action runs for both sites.
 - 2026-10-12T19:45:13Z engine=codex model=gpt-6-astra: Drafted both redesigns and generated matching social preview images. Visual review and publication remain.
 - 2026-10-12T19:54:03Z engine=codex model=gpt-6-astra: Authenticated GitHub CLI and pushed both `portfolio/true-portfolio` branches. Updated the handoff with branch links. Visual review and merging remain.
+- 2026-10-12T19:55:39Z engine=codex model=gpt-6-astra: Added a dedicated handover to both branches for continuation from the Paseo server. Remaining work is visual review and deployment verification.
