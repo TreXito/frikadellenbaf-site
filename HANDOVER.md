@@ -1,46 +1,39 @@
 # Portfolio handover, 2026-10-12
 
-Status: complete. Both dark redesigns are on `main` and live on their custom domains.
+Status: the reference-led revision is reviewed locally on `redesign/reference-led-cat` in both repositories. Publish it through the existing GitHub Pages `main` branches, then verify both live domains.
 
-## Where to continue
+## Current task
 
-- Personal site checkout: `/home/orc/websites/perssite`, [GitHub repository](https://github.com/TreXito/perssite).
-- BAF project site checkout: `/home/orc/websites/frikadellenbaf-site`, [GitHub repository](https://github.com/TreXito/frikadellenbaf-site).
-- The same `README.md` in each repository contains the plan, claim sources and progress log. Current state: 8 of 8 plan steps done.
-- Shared Orc task: `/home/orc/.agents/tasks/finish-portfolio-review-and-github-pages-publica.md`.
+The owner said the first published sites looked generic, asked for Dribbble inspiration, and asked to use the cat profile photo from [TreXito on GitHub](https://github.com/TreXito). Both sites must stay dark. The BAF site should still feel connected to Minecraft SkyBlock.
 
-Both local checkouts are on `main`. The reviewed branches were fast-forwarded into the public `main` branches.
+- Personal checkout: `/home/orc/websites/perssite`.
+- BAF checkout: `/home/orc/websites/frikadellenbaf-site`.
+- Shared task file: `/home/orc/.agents/tasks/portfolio-dribbble-cat-redesign.md`.
+- See the matching `README.md` in both repositories for fact sources, prior work and direct Dribbble references.
 
-## What is done
+## Changes ready to publish
 
-1. Reworked trexito.com into a personal portfolio for Philipp Podobri / TreXito, with real background, selected projects and verified links.
-2. Reworked its Frikadellen BAF detail page as a project note. Reworked auctionflipper.bz into a dark SkyBlock inventory interface with the system, real panel screenshots, source and setup.
-3. Removed fabricated uptime and earnings figures and the simulated live terminal from visible copy. Generated new favicon and social preview artwork for both sites.
-4. Preserved both root `CNAME` files and the existing built-in GitHub Pages publication path.
-5. Reviewed all three pages in Chromium at 1440, 768, 390 and 320 px. Fixed the BAF header overflow at 320 px, improved accent color contrast, corrected a timeline accessibility label and removed em dashes from page titles. Both sites now use dark palettes only, and new social preview images match them.
-6. Updated both BAF pages to reflect the current project README's October 2026 advice against use because of recent bans. Verified that the Linux loader command resolves to an asset in the latest release, `build-20261008-db7a4f1`.
+1. trexito.com now leads with Philipp Podobri's name, the GitHub cat photo, a real BAF panel screenshot, and simpler project and background sections. The BAF project note uses the same design.
+2. auctionflipper.bz now uses its real control panel as the main visual, direct feature rows, further real screenshots, and a clearly visible October 2026 advisory against use because of recent bans.
+3. Both social previews were regenerated from code-native SVG sources, with the cat photo on the personal preview and the real panel on the BAF preview.
+4. The root `CNAME` files and built-in GitHub Pages configuration are unchanged.
 
 ## Verification
 
-- Browser check: 12 page/viewport combinations, zero horizontal overflow, zero failed images and zero request failures.
-- axe checks: zero confirmed WCAG A/AA violations on all three pages at desktop and mobile widths. Diagram and hero text over patterned backgrounds required manual contrast review.
-- Keyboard checks: first Tab reveals the skip link with a visible outline, and reduced-motion mode disables smooth scrolling on all three pages.
-- Local link, image, metadata and heading audit: zero problems. Other checked public links returned HTTP 200; LinkedIn returned its automated-client status 999, so that profile cannot be verified by this client.
+- Chromium reviewed all three pages at 1440, 768, 390 and 320 px: zero horizontal overflow and zero failed images.
+- axe found zero confirmed WCAG A/AA violations at desktop and mobile widths. The BAF hero pattern prevents automatic contrast analysis; representative small text on that background exceeds 6.8:1 contrast.
+- Keyboard first Tab reveals a visible skip link on all pages. Reduced motion disables smooth scrolling.
+- Local links, image paths, page titles, descriptions, heading counts and image alt text passed the static audit. The current BAF README warning and release link were checked.
 
-## Decisions to preserve
+## Publication path
 
-- Tone: specific, curious and modest. The owner asked for an artistic, nerdy personal site and a Minecraft cheats aesthetic for the BAF site. The chosen direction is dark SkyBlock inventory UI, with no bright mode on either site. No em dashes in site copy.
-- Identity and history: the owner supplied the LinkedIn profile and confirmed the SAATBAU LINZ apprenticeship, 42 Wels study and HTL Leonding background. Powerlifting is one brief personal note. See `README.md` for links and dates.
-- BAF metrics: the existing `flips.json` contains candidate or target values without dates or sale confirmation. Do not call them realised profit. A dated anonymized example is optional only when its source and definition are clear.
-- The sites are static HTML/CSS with no build step. The BAF repo still contains old JavaScript and `flips.json`, but the new page does not load them. Do not delete them before reviewing whether anything else uses them.
+1. Commit and push both `redesign/reference-led-cat` branches.
+2. Fast-forward each `main` branch after confirming it has not diverged. Preserve `CNAME`.
+3. Check both GitHub Pages action runs, then check the served HTML, CSS, cat images and social preview PNGs on trexito.com and auctionflipper.bz.
+4. Update the shared task file and matching README/HANDOVER files with final commit IDs and deployment evidence.
 
-## Publication evidence
+## Constraints
 
-1. [perssite Pages run](https://github.com/TreXito/perssite/actions/runs/38303882290) for commit `011c420` completed successfully.
-2. [frikadellenbaf-site Pages run](https://github.com/TreXito/frikadellenbaf-site/actions/runs/38303882452) for commit `78405a8` completed successfully.
-3. Both custom domains returned HTTP 200 for updated HTML, dark CSS and social preview PNGs on 2026-10-12. The live pages contained the redesigned headings and October 2026 ban advisory.
-
-## Files changed in review
-
-- perssite: `index.html`, `frikadellen-baf.html`, `styles.css`, `og.svg`, `og.png`, `README.md`, `HANDOVER.md`.
-- frikadellenbaf-site: `index.html`, `style.css`, `favicon.svg`, `og.svg`, `assets/og.png`, `sitemap.xml`, `README.md`, `HANDOVER.md`.
+- Keep the pages dark only. Avoid invented live results, profit claims, customer counts or uptime.
+- The BAF repository README currently advises against using the software due to recent bans. Keep that advice visible near the top of the project site and in the personal project note.
+- The BAF repo still contains old JavaScript and `flips.json`; the new page does not load them. Do not delete them without reviewing whether another consumer uses them.

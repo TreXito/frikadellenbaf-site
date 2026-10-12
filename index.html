@@ -3,86 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1115">
-  <title>Frikadellen BAF | SkyBlock automation client</title>
-  <meta name="description" content="Frikadellen BAF is an open source Rust client for Hypixel SkyBlock Auction House and Bazaar automation. See the real panel, modules, source and setup.">
+  <meta name="theme-color" content="#0e1410">
+  <title>Frikadellen BAF / Hypixel SkyBlock client</title>
+  <meta name="description" content="Frikadellen BAF is an open source Rust client for Hypixel SkyBlock Auction House and Bazaar automation. Explore its real web panel, source and current project guidance.">
   <link rel="canonical" href="https://auctionflipper.bz/">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://auctionflipper.bz/">
-  <meta property="og:title" content="Frikadellen BAF | SkyBlock automation client">
-  <meta property="og:description" content="Auction House flips, Bazaar orders and a real control panel. An open source Rust project by TreXito.">
-  <meta property="og:image" content="https://auctionflipper.bz/assets/og.png">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://auctionflipper.bz/"><meta property="og:title" content="Frikadellen BAF / Hypixel SkyBlock client"><meta property="og:description" content="Auction House, Bazaar and a window into the bot. An open source Rust project by TreXito."><meta property="og:image" content="https://auctionflipper.bz/assets/og.png?v=3">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <aside class="advisory" aria-label="Current use advisory">
-    <div class="wrap advisory-inner">
-      <span class="advisory-label">CURRENT PROJECT NOTICE</span>
-      <p>As of October 2026, the project README advises against using BAF because of recent bans.</p>
-      <a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Read the current notice <span aria-hidden="true">↗</span></a>
-    </div>
-  </aside>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="/" aria-label="Frikadellen BAF home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span>FRIKADELLEN<strong>BAF</strong><small>SKYBLOCK CLIENT / RUST</small></span></a>
-      <nav aria-label="Main navigation"><a href="#modules">Modules</a><a href="#panel">The panel</a><a href="#download">Download</a></nav>
-      <a class="header-source" href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
-    </div>
-  </header>
+  <div class="notice"><div class="wrap notice-inner"><span>PROJECT NOTICE</span><p>As of October 2026, the README advises against using BAF because of recent bans.</p><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Read current guidance <span aria-hidden="true">↗</span></a></div></div>
+  <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/" aria-label="Frikadellen BAF home"><span class="brand-glyph" aria-hidden="true">✦</span><span>FRIKADELLEN<span>BAF</span></span></a><nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#inside">Inside the panel</a><a href="#source">Source</a></nav><a class="owner-link" href="https://trexito.com/" aria-label="TreXito portfolio"><img src="assets/cat-avatar.png" alt="TreXito’s orange cat avatar" width="32" height="32"> by TreXito <span aria-hidden="true">↗</span></a></div></header>
   <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-square" aria-hidden="true"></span> HYPIXEL SKYBLOCK / OPEN SOURCE</p>
-        <h1 id="hero-title">SKYBLOCK<br><span>ON AUTOPILOT.</span></h1>
-        <p class="hero-lede">Frikadellen BAF is a headless Rust client for Auction House and Bazaar automation. It acts on Coflnet flip data, manages listings and orders, and gives you a real view of the bot through a web panel and Discord.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#modules">Explore the modules <span aria-hidden="true">↘</span></a><a class="button button-outline" href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">View the code <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-tags" role="group" aria-label="Project technology"><span>RUST CLIENT</span><span>AH + BAZAAR</span><span>WEB + DISCORD</span></div>
-      </div>
-      <figure class="hero-preview">
-        <div class="window-bar"><span class="window-lights" aria-hidden="true"><i></i><i></i><i></i></span><span>BAF / CONTROL PANEL</span><span>REAL INTERFACE</span></div>
-        <img src="assets/web-panel1.png" alt="Frikadellen BAF control panel showing status, account controls and inventory" width="1500" height="950">
-        <figcaption><span>SCREENSHOT / 01</span><span>STATUS · CONTROLS · INVENTORY</span></figcaption>
-      </figure>
-      <div class="hero-floor" aria-hidden="true"><span>01 / THE CLIENT</span><span>SCROLL TO EXPLORE ↓</span></div>
-    </section>
-
-    <section id="modules" class="modules-section" aria-labelledby="modules-title">
-      <div class="wrap">
-        <div class="section-heading"><div><p class="eyebrow">02 / THE MODULES</p><h2 id="modules-title">The pieces behind<br><span>every flip.</span></h2></div><p>BAF connects market data, in-game actions and remote controls. These are the parts documented in the public repository.</p></div>
-        <div class="module-grid">
-          <article class="module-card"><div class="module-top"><span class="slot-icon" aria-hidden="true">AH</span><span>MODULE_01</span></div><h3>Auction House</h3><p>Receives Coflnet flip opportunities, buys underpriced BINs and can relist acquired items.</p><span class="module-foot">BUY / RELIST</span></article>
-          <article class="module-card"><div class="module-top"><span class="slot-icon slot-gold" aria-hidden="true">BZ</span><span>MODULE_02</span></div><h3>Bazaar orders</h3><p>Places buy and sell orders, checks fills, collects items and handles stale orders.</p><span class="module-foot">ORDER / COLLECT</span></article>
-          <article class="module-card"><div class="module-top"><span class="slot-icon slot-cyan" aria-hidden="true">UI</span><span>MODULE_03</span></div><h3>Web panel</h3><p>Shows bot state, accounts, auctions and controls in a browser interface.</p><span class="module-foot">OBSERVE / CONTROL</span></article>
-          <article class="module-card"><div class="module-top"><span class="slot-icon slot-purple" aria-hidden="true">DC</span><span>MODULE_04</span></div><h3>Discord</h3><p>Gives linked users remote commands and notifications for a running session.</p><span class="module-foot">COMMAND / NOTIFY</span></article>
-        </div>
-        <ol class="flow" aria-label="Simplified BAF workflow"><li><span>01</span>COFLNET FEED</li><li><span>02</span>RUST CLIENT</li><li><span>03</span>AH + BAZAAR</li><li><span>04</span>WEB + DISCORD</li></ol>
-      </div>
-    </section>
-
-    <section id="panel" class="panel-section wrap" aria-labelledby="panel-title">
-      <div class="section-heading"><div><p class="eyebrow">03 / REAL SCREENS</p><h2 id="panel-title">See the bot.<br><span>Know the state.</span></h2></div><p>These are screenshots of the actual project interface. They are not a simulated live feed or a profit claim.</p></div>
-      <div class="screen-grid">
-        <figure class="screen-card screen-wide"><div class="screen-label"><span>SCREEN_01</span><span>CONTROL PANEL</span></div><img src="assets/web-panel1.png" alt="BAF web panel with bot status, controls, accounts and inventory" width="1500" height="950" loading="lazy"><figcaption>Status, controls, accounts and inventory.</figcaption></figure>
-        <figure class="screen-card"><div class="screen-label"><span>SCREEN_02</span><span>MARKET</span></div><img src="assets/web-panel2.png" alt="BAF web panel showing auctions, Bazaar orders and chat" width="1500" height="950" loading="lazy"><figcaption>Auctions, Bazaar orders and chat.</figcaption></figure>
-        <figure class="screen-card"><div class="screen-label"><span>SCREEN_03</span><span>DISCORD</span></div><img src="assets/discord-integration.png" alt="Discord integration displaying commands for a linked BAF bot" width="1782" height="1197" loading="lazy"><figcaption>Remote control through Discord.</figcaption></figure>
-      </div>
-      <p class="section-footnote">For the current feature list, check the <a href="https://github.com/TreXito/frikadellen-baf-121#features" target="_blank" rel="noopener noreferrer">repository README <span aria-hidden="true">↗</span></a>.</p>
-    </section>
-
-    <section id="download" class="download-section" aria-labelledby="download-title"><div class="wrap download-layout">
-      <div class="download-copy"><p class="eyebrow">04 / BUILDS + SOURCE</p><h2 id="download-title">Inspect first.<br><span>Then decide.</span></h2><p>The current README warns against using the software because of recent bans. The source and platform builds remain available on GitHub. Read the latest guidance before running anything.</p><div class="download-links"><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer"><span>Read the source and notice</span><span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121/releases/latest" target="_blank" rel="noopener noreferrer"><span>View latest release</span><span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121#quick-start--your-first-run" target="_blank" rel="noopener noreferrer"><span>Open setup guide</span><span aria-hidden="true">↗</span></a></div></div>
-      <div class="command-panel"><div class="command-head"><span>LINUX / X86_64</span><span>LOADER</span></div><pre><code>wget https://github.com/TreXito/frikadellen-baf-121/releases/latest/download/FrikadellenBAF-loader-linux-x86_64
-chmod +x FrikadellenBAF-loader-linux-x86_64
-./FrikadellenBAF-loader-linux-x86_64</code></pre><p>The loader checks for a newer build when it starts. Releases also include Windows and macOS builds.</p></div>
-    </div></section>
-    <section class="notes-section wrap" aria-labelledby="notes-title"><div><p class="eyebrow">05 / THE FINE PRINT</p><h2 id="notes-title">A bot has<br><span>consequences.</span></h2></div><div class="notes-copy"><p>Automating gameplay can violate Hypixel’s rules and lead to account penalties. Market conditions, latency and configuration affect outcomes; displayed flip values are not confirmed profit until items sell.</p><p>Frikadellen BAF is open source under AGPLv3 and is not affiliated with Hypixel, Mojang or Coflnet. The <a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">repository</a> is the source of truth for current behavior.</p></div></section>
+    <section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow">HYPIXEL SKYBLOCK / OPEN SOURCE / RUST</p><h1 id="hero-title">Frikadellen<br><span>BAF.</span></h1><p class="hero-lede">Auction House, Bazaar, and a window into the bot. BAF is a headless Rust client that acts on flip data and lets you see what it is doing.</p><div class="hero-actions"><a class="button button-lime" href="#inside">See the real panel <span aria-hidden="true">↘</span></a><a class="button button-line" href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Explore the code <span aria-hidden="true">↗</span></a></div></div><figure class="hero-art"><div class="hero-art-top"><span class="pixel-mark" aria-hidden="true">▦</span><span>BAF CONTROL PANEL</span><span>PROJECT SCREENSHOT</span></div><img src="assets/web-panel1.png" alt="Actual BAF control panel showing controls, account state and Minecraft inventory" width="1500" height="950"><figcaption>STATUS / CONTROLS / INVENTORY</figcaption></figure></section>
+    <div class="ticker wrap" role="group" aria-label="Project areas"><span>AUCTION HOUSE</span><span>BAZAAR</span><span>WEB PANEL</span><span>DISCORD</span></div>
+    <section id="how-it-works" class="how-section" aria-labelledby="how-title"><div class="wrap"><div class="section-head"><p class="eyebrow">THE CLIENT</p><h2 id="how-title">More than a<br><span>buy button.</span></h2><p>BAF handles the steps around a flip, from incoming data to in-game actions and remote visibility. These parts are documented in the public repository.</p></div><div class="feature-list"><article><span class="feature-number">01</span><div><h3>Find &amp; buy</h3><p>Uses Coflnet flip opportunities to buy underpriced Auction House BIN listings.</p></div><span class="feature-tag">AUCTION HOUSE</span></article><article><span class="feature-number">02</span><div><h3>List &amp; trade</h3><p>Relists acquired items and manages Bazaar buy and sell orders, fills and collection.</p></div><span class="feature-tag">MARKET LOOP</span></article><article><span class="feature-number">03</span><div><h3>Watch &amp; control</h3><p>Shows state in a web panel and provides linked Discord users with commands and notifications.</p></div><span class="feature-tag">REMOTE VIEW</span></article></div></div></section>
+    <section id="inside" class="inside-section wrap" aria-labelledby="inside-title"><div class="section-head"><p class="eyebrow">INSIDE THE PROJECT</p><h2 id="inside-title">The actual<br><span>interface.</span></h2><p>These are project screenshots, not a simulated live feed. The panel makes a running session visible, and Discord provides another way to check in.</p></div><div class="shots"><figure class="shot shot-main"><img src="assets/web-panel1.png" alt="BAF web panel with bot status, controls, accounts and Minecraft inventory" width="1500" height="950" loading="lazy"><figcaption><span>01 / CONTROL PANEL</span><span>STATUS, CONTROLS, INVENTORY</span></figcaption></figure><figure class="shot"><img src="assets/web-panel2.png" alt="BAF web panel showing active auctions, Bazaar orders and chat" width="1500" height="950" loading="lazy"><figcaption><span>02 / MARKET VIEW</span><span>AUCTIONS &amp; ORDERS</span></figcaption></figure><figure class="shot"><img src="assets/discord-integration.png" alt="BAF Discord integration with linked bot commands" width="1782" height="1197" loading="lazy"><figcaption><span>03 / DISCORD</span><span>REMOTE COMMANDS</span></figcaption></figure></div></section>
+    <section id="source" class="source-section" aria-labelledby="source-title"><div class="wrap source-layout"><div><p class="eyebrow">SOURCE &amp; RELEASES</p><h2 id="source-title">Read first.<br><span>Run later.</span></h2><p>The current README warns against using the software because of recent bans. You can inspect the source, current documentation and published builds on GitHub. Check its latest advice before attempting setup.</p></div><div class="source-links"><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer"><span>Repository and current notice</span><span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121#features" target="_blank" rel="noopener noreferrer"><span>Documented features</span><span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121/releases/latest" target="_blank" rel="noopener noreferrer"><span>Latest releases</span><span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="fine-print wrap" aria-labelledby="fine-title"><p class="eyebrow">BEFORE YOU GO</p><h2 id="fine-title">Know the trade-offs.</h2><p>Automating gameplay can violate Hypixel’s rules and lead to account penalties. Flip values are estimates, not confirmed profit until items sell. BAF is open source under AGPLv3 and is not affiliated with Hypixel, Mojang or Coflnet.</p></section>
   </main>
-  <footer class="site-footer"><div class="wrap footer-inner"><span>© 2026 PHILIPP PODOBRI / TREXITO</span><div><a href="https://trexito.com/">PORTFOLIO <span aria-hidden="true">↗</span></a><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a><a href="#main">BACK TO TOP ↑</a></div></div></footer>
+  <footer class="site-footer"><div class="wrap footer-inner"><a class="footer-owner" href="https://trexito.com/" aria-label="TreXito portfolio"><img src="assets/cat-avatar.png" alt="TreXito’s orange cat avatar" width="40" height="40"><span>Built by TreXito</span></a><div><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener noreferrer">Source ↗</a><a href="https://trexito.com/">Portfolio ↗</a><a href="#main">Back to top ↑</a></div></div></footer>
 </body>
 </html>

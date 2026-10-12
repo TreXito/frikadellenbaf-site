@@ -27,11 +27,23 @@ The old personal page contained fixed uptime, flip and profit figures without a 
 
 ## Design and implementation
 
-The personal site uses a dark slate palette, serif editorial type and annotated project sketches. The BAF site uses a dark SkyBlock inventory interface with pixel type, lime accents, module slots and real panel screenshots. Neither site has a bright mode. Both are static HTML/CSS sites with no build step. The new BAF page does not load the old JavaScript files; they remain in the repository until cleanup is reviewed.
+The personal site uses a restrained charcoal and warm orange palette, direct typography, the owner's GitHub cat photo, and a real BAF panel screenshot. The BAF site uses deep green, lime accents, light pixel details, and real project interface screenshots. Neither site has a bright mode. Both are static HTML/CSS sites with no build step. The BAF page does not load the old JavaScript files; they remain in the repository until cleanup is reviewed.
 
-Changed in `perssite`: `index.html`, `frikadellen-baf.html`, new `styles.css`, `favicon.svg`, `og.svg`, and regenerated `og.png`.
+Current `perssite` assets include `index.html`, `frikadellen-baf.html`, `styles.css`, `cat-avatar.png`, `baf-panel.png`, `og.svg`, and `og.png`. The cat PNG is also the browser icon.
 
-Changed in `frikadellenbaf-site`: `index.html`, `style.css`, new `favicon.svg`, `og.svg`, and regenerated `assets/og.png`. Existing project screenshots and install/source links remain available.
+Current `frikadellenbaf-site` assets include `index.html`, `style.css`, `favicon.svg`, `og.svg`, `assets/og.png`, `assets/cat-avatar.png`, and the original project screenshots. Source and release links remain available.
+
+## Reference-led revision, 2026-10-12
+
+The owner found the first published version too generic and requested Dribbble inspiration and the cat photo from the [TreXito GitHub profile](https://github.com/TreXito). The revision is on `redesign/reference-led-cat` in both repositories. It keeps both sites dark and retains the current BAF ban advisory.
+
+- [Nicolas Meuzard's dark developer portfolio](https://dribbble.com/shots/9809111-Developer-Dark-Grid-Portfolio) informed the direct introduction and spare project presentation.
+- [Andrey Chernov's Minecraft SkyBlock concept](https://dribbble.com/shots/26621823-Minecraft-SkyBlock-Landing-Page-Server-UI-Concept) informed the use of game context and a strong project visual, without its bright palette or invented server statistics.
+- [Diana Scarevnea's gaming dashboard](https://dribbble.com/shots/26479455-Gaming-Dashboard-Dark-Mode-UI) informed the deep green surface and restrained lime accents around the real panel.
+
+The local cat avatar is copied from GitHub's public profile image. The personal site also stores a copy of the real BAF panel screenshot so it does not rely on the other domain for its main project image. Both social preview PNGs and SVG sources match the new design.
+
+Local review: Chromium at 1440, 768, 390 and 320 px on all three pages found zero overflow or failed images. axe found zero confirmed WCAG A/AA violations, keyboard skip links and reduced motion passed, and local asset/link/metadata audit found no problems. The BAF hero has a patterned background, so its text colors were checked manually; the smallest sampled text exceeded 6.8:1 contrast. The public BAF README still advises against use as of October 2026.
 
 ## Publishing
 
