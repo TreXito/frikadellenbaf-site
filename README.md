@@ -1,8 +1,8 @@
 # TreXito portfolio rework
 
-This is the handoff for a coordinated redesign of [trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/). Work is on the `portfolio/true-portfolio` branch in [perssite](https://github.com/TreXito/perssite/tree/portfolio/true-portfolio) and [frikadellenbaf-site](https://github.com/TreXito/frikadellenbaf-site/tree/portfolio/true-portfolio).
+This documents the coordinated redesign of [trexito.com](https://trexito.com/) and [auctionflipper.bz](https://auctionflipper.bz/). The reviewed work is published from `main` in [perssite](https://github.com/TreXito/perssite) and [frikadellenbaf-site](https://github.com/TreXito/frikadellenbaf-site).
 
-Start with [HANDOVER.md](HANDOVER.md) for the exact stopping point and next actions.
+See [HANDOVER.md](HANDOVER.md) for review decisions and publication evidence.
 
 ## Intent
 
@@ -46,7 +46,7 @@ Each site has a root `CNAME` file for its custom domain. Both repositories have 
 5. [x] Draft the BAF project site with honest copy, screenshots and setup path.
 6. [x] Push both review branches to GitHub.
 7. [x] Review desktop and mobile layouts, links, image crops, metadata, accessibility and current release instructions. Fix issues found.
-8. [ ] Merge to `main` after review and verify both live domains and Pages action results.
+8. [x] Merge to `main` after review and verify both live domains and Pages action results.
 
 ## Progress log
 
@@ -58,3 +58,4 @@ Each site has a root `CNAME` file for its custom domain. Both repositories have 
 - 2026-10-12T20:12:17Z engine=codex model=gpt-6.1-sol: Reviewed all three pages at 1440, 768, 390 and 320 px; fixed BAF mobile navigation, contrast, and a timeline label. Browser checks found zero overflow, failed images or request failures; axe found zero WCAG A/AA violations. Keyboard checks confirmed visible skip-link focus and reduced-motion behavior on all three pages. Local link and metadata audit passed. The current BAF README warns against use due to recent bans, so both BAF pages now reflect that guidance. The BAF sitemap date now matches the review. GitHub release API confirms the Linux loader asset in build-20261008-db7a4f1. Publishing still needs GitHub write access on this server.
 - 2026-10-12T20:21:10Z engine=codex model=gpt-6.1-sol: Reworked auctionflipper.bz into a dark SkyBlock inventory interface at the owner's request and changed trexito.com to dark only. Regenerated both social previews and verified 12 page/viewport combinations with zero overflow or failed images. Static audit found no local asset or metadata problems; axe reported zero confirmed WCAG A/AA violations and keyboard checks passed. GitHub write access remains unresolved on this server.
 - 2026-10-12T20:22:35Z engine=codex model=gpt-6.1-sol: Committed the final dark designs as d60f8e3 in perssite and 6fa1509 in frikadellenbaf-site. Both review branches pushed successfully over Git HTTPS; merge and live deployment verification remain.
+- 2026-10-12T20:24:36Z engine=codex model=gpt-6.1-sol: Fast-forwarded both reviewed branches to main. GitHub Pages runs 38303882290 (perssite) and 38303882452 (frikadellenbaf-site) completed successfully. Both custom domains returned HTTP 200 for their updated HTML, dark CSS and social images; live page text matches the redesign and current ban advisory.

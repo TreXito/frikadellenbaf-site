@@ -1,15 +1,15 @@
 # Portfolio handover, 2026-10-12
 
-Next action: merge the reviewed `portfolio/true-portfolio` branches to `main`, then verify both GitHub Pages deployments and live domains.
+Status: complete. Both dark redesigns are on `main` and live on their custom domains.
 
 ## Where to continue
 
-- Personal site checkout: `/home/orc/websites/perssite`, [GitHub branch](https://github.com/TreXito/perssite/tree/portfolio/true-portfolio).
-- BAF project site checkout: `/home/orc/websites/frikadellenbaf-site`, [GitHub branch](https://github.com/TreXito/frikadellenbaf-site/tree/portfolio/true-portfolio).
-- The same `README.md` in each branch contains the plan, claim sources and progress log. Current state: 7 of 8 plan steps done.
+- Personal site checkout: `/home/orc/websites/perssite`, [GitHub repository](https://github.com/TreXito/perssite).
+- BAF project site checkout: `/home/orc/websites/frikadellenbaf-site`, [GitHub repository](https://github.com/TreXito/frikadellenbaf-site).
+- The same `README.md` in each repository contains the plan, claim sources and progress log. Current state: 8 of 8 plan steps done.
 - Shared Orc task: `/home/orc/.agents/tasks/finish-portfolio-review-and-github-pages-publica.md`.
 
-Both local checkouts are on `portfolio/true-portfolio`, and the reviewed commits are pushed to GitHub. The public `main` branches still serve the old sites.
+Both local checkouts are on `main`. The reviewed branches were fast-forwarded into the public `main` branches.
 
 ## What is done
 
@@ -34,10 +34,11 @@ Both local checkouts are on `portfolio/true-portfolio`, and the reviewed commits
 - BAF metrics: the existing `flips.json` contains candidate or target values without dates or sale confirmation. Do not call them realised profit. A dated anonymized example is optional only when its source and definition are clear.
 - The sites are static HTML/CSS with no build step. The BAF repo still contains old JavaScript and `flips.json`, but the new page does not load them. Do not delete them before reviewing whether anything else uses them.
 
-## Remaining work
+## Publication evidence
 
-1. Merge both reviewed branches to `main`. Preserve `CNAME` and the existing Pages configuration.
-2. Check the GitHub Pages action result in each repository, then load trexito.com and auctionflipper.bz and confirm the redesigned pages and custom domains are live. Mark plan step 8 complete in both READMEs.
+1. [perssite Pages run](https://github.com/TreXito/perssite/actions/runs/38303882290) for commit `011c420` completed successfully.
+2. [frikadellenbaf-site Pages run](https://github.com/TreXito/frikadellenbaf-site/actions/runs/38303882452) for commit `78405a8` completed successfully.
+3. Both custom domains returned HTTP 200 for updated HTML, dark CSS and social preview PNGs on 2026-10-12. The live pages contained the redesigned headings and October 2026 ban advisory.
 
 ## Files changed in review
 
