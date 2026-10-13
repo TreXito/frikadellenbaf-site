@@ -53,8 +53,6 @@
     { n: 'Soul Whip',                          p: 16000000,  t: 25900000,   f: 'Sniper Median' },
     { n: 'Ancient Warden Helmet',              p: 111000000, t: 124998999,  f: 'Sniper' },
   ];
-  LOG = AH.map(f => ({ n: f.n, profit: f.t - f.p, col: null }))
-          .sort((a, b) => b.profit - a.profit);
   fetch('flips.json').then(r => r.ok ? r.json() : Promise.reject()).then(data => {
     if (!Array.isArray(data) || !data.length) return;
     AH = data.filter(f => f && f.item && f.price > 0 && f.target > f.price)
@@ -85,7 +83,8 @@
   /* ── log walker: steps through the REAL public log, always moving ──────
      One entry every ~2-3s, item in its true rarity colour, Σ counting up to
      the full tracked total. Loops. Nothing invented: LOG is flips.json. */
-  let LOG = [];
+  let LOG = AH.map(f => ({ n: f.n, profit: f.t - f.p, col: null }))
+                  .sort((a, b) => b.profit - a.profit);
   let wi = 0, wsum = 0, dsum = 0, dsumCur = 0;
   function walkerTick() {
     if (!LOG.length) { setTimeout(walkerTick, 900); return; }
@@ -114,7 +113,8 @@
     requestAnimationFrame(raf);
   })();
   if (!reduce) setTimeout(walkerTick, 1200);
-  else if (LOG.length) { wi = LOG.length; dsum = dsumCur = LOG.reduce((s, f) => s + f.profit, 0); }
+  else if (LOG.length) { wi = LOG.length; dsum = dsumCur = LOG.reduce((s, f) => s + f.profit, 0);
+    if (elLI) elLI.textContent = wi + '/' + LOG.length; }
 
   /* ── replay clock — honest: seconds the replay has been running ───────── */
   const boot = Date.now();
