@@ -87,16 +87,6 @@ img{ max-width:100%; display:block; }
 
 .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px; }
 
-/* ── Project notice ───────────────────────────────────────────── */
-.notice{ position:relative; z-index:101;
-    background:linear-gradient(90deg, rgba(255,93,93,.07), rgba(240,180,41,.06) 55%, rgba(255,93,93,.07));
-    border-bottom:1px solid rgba(255,93,93,.22); }
-.notice-in{ display:flex; align-items:center; gap:14px; padding:8px 24px; flex-wrap:wrap; }
-.notice-flag{ font-family:var(--mono); font-size:.66rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--red); border:1px solid rgba(255,93,93,.4); background:rgba(255,93,93,.08); padding:3px 9px; border-radius:6px; white-space:nowrap; }
-.notice p{ color:var(--fg-body); font-size:.83rem; }
-.notice a{ font-family:var(--mono); font-size:.74rem; white-space:nowrap; }
-
 /* mono affordance */
 code{
     font-family:var(--mono); font-size:.86em; color:var(--green-hi);
