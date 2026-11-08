@@ -51,7 +51,6 @@
       "mainEntity": [
         { "@type": "Question", "name": "What is Frikadellen BAF?", "acceptedAnswer": { "@type": "Answer", "text": "Frikadellen BAF is a Hypixel SkyBlock macro that automatically flips the Auction House and Bazaar. It uses Coflnet's flip data to snipe underpriced BIN auctions, relists them at target, runs your bazaar orders, and tracks profit. Controllable from a web panel or from Discord." } },
         { "@type": "Question", "name": "Is it a free SkyBlock macro?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Frikadellen BAF is free and open source under the AGPLv3 license. You only need a Coflnet account for the flip feed." } },
-        { "@type": "Question", "name": "Is it safe to use right now?", "acceptedAnswer": { "@type": "Answer", "text": "Automating gameplay violates Hypixel's rules and can get your account banned. As of October 2026 the project README advises against running BAF because of recent ban waves. Read the repository's current guidance before attempting setup." } },
         { "@type": "Question", "name": "Does it flip both the Auction House and the Bazaar?", "acceptedAnswer": { "@type": "Answer", "text": "Both, at the same time. It runs Auction House flipping (BIN sniping, auto-relisting, claiming sold auctions) and Bazaar flipping (automatic buy/sell orders, fill tracking, stale-order cancellation), and you can toggle each independently." } },
         { "@type": "Question", "name": "What do I need to run the macro?", "acceptedAnswer": { "@type": "Answer", "text": "A Minecraft: Java Edition account, a Coflnet account, and somewhere to run it. A cheap Linux VPS near Hypixel's servers is recommended so it runs 24/7 with low latency. Windows and macOS builds are also provided." } },
         { "@type": "Question", "name": "How fast is the auction flipping?", "acceptedAnswer": { "@type": "Answer", "text": "On a VPS near Hypixel the full buy path, from listing detection to confirm, typically lands in about 50ms. Real speed depends mostly on your latency to Hypixel, which the built-in /hypixel ping command measures." } }
@@ -61,15 +60,6 @@
 </head>
 <body>
 <div class="grid-lines" aria-hidden="true"></div>
-
-<!-- ── Project notice ─────────────────────────────────────────── -->
-<div class="notice">
-    <div class="container notice-in">
-        <span class="notice-flag">⚠ status</span>
-        <p>Oct 2026: the README advises against running BAF due to recent ban waves.</p>
-        <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">current guidance ↗</a>
-    </div>
-</div>
 
 <!-- ── Navigation ─────────────────────────────────────────────── -->
 <nav id="navbar">
@@ -338,10 +328,6 @@
             <details class="faq-item">
                 <summary>Is it free?</summary>
                 <p>Yes. <strong>Free and open source</strong> under the AGPLv3 license. You only need a Coflnet account for the flip data.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Is it safe to use right now?</summary>
-                <p>Automating gameplay violates Hypixel's rules and can get your account penalized. As of October 2026 the <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">project README</a> advises <strong>against</strong> running BAF because of recent ban waves. Read the repository's current guidance before attempting setup.</p>
             </details>
             <details class="faq-item">
                 <summary>Does it flip the Bazaar as well?</summary>
