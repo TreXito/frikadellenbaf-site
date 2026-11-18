@@ -14,20 +14,20 @@
     <meta property="og:url" content="https://auctionflipper.bz">
     <meta property="og:title" content="Frikadellen BAF · Auction &amp; Bazaar Flipper">
     <meta property="og:description" content="A free Hypixel SkyBlock macro that flips the Auction House and Bazaar automatically, with a web panel and Discord control. Built in Rust.">
-    <meta property="og:image" content="https://auctionflipper.bz/assets/og.png?v=3">
+    <meta property="og:image" content="https://auctionflipper.bz/assets/og.png?v=4">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Frikadellen BAF">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="theme-color" content="#05080a">
+    <meta name="theme-color" content="#040705">
 
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <meta name="twitter:image" content="https://auctionflipper.bz/assets/og.png?v=4">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23070c0f'/><circle cx='50' cy='50' r='30' fill='none' stroke='%2339d353' stroke-width='7'/><text x='50' y='68' font-size='46' text-anchor='middle' fill='%2339d353' font-family='monospace' font-weight='bold'>❯</text></svg>">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='.6' y2='1'><stop offset='0' stop-color='%235bea8e'/><stop offset='.55' stop-color='%2316a34f'/><stop offset='1' stop-color='%230b6e35'/></linearGradient></defs><rect width='100' height='100' rx='23' fill='url(%23g)'/><path d='M27 31l19 19-19 19M52 69h22' fill='none' stroke='white' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 
     <script type="application/ld+json">
     {
@@ -59,19 +59,21 @@
     </script>
 </head>
 <body>
-<div class="grid-lines" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ── Navigation ─────────────────────────────────────────────── -->
 <nav id="navbar">
     <div class="nav-container">
-        <a href="#" class="logo"><span class="coin">❯</span> frikadellen<span class="logo-baf">baf</span></a>
+        <a href="#top" class="logo" aria-label="Frikadellen BAF, back to top"><span class="coin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7l5 5-5 5"/><path d="M12.5 17H19"/></svg></span><span class="wordmark">frikadellen<span class="logo-baf">baf</span></span></a>
         <ul class="nav-links">
+            <li class="nav-lens" aria-hidden="true"></li>
             <li class="nav-hide"><a href="#what">What it does</a></li>
             <li class="nav-hide"><a href="#flips">Flips</a></li>
             <li class="nav-hide"><a href="#panel">Panel</a></li>
             <li class="nav-hide"><a href="#install">Install</a></li>
-            <li><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a></li>
-            <li><a href="https://github.com/TreXito/frikadellen-baf-121/releases" class="btn-nav" target="_blank" rel="noopener">Download →</a></li>
+            <li><a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>GitHub</a></li>
+            <li><a href="https://github.com/TreXito/frikadellen-baf-121/releases" class="btn-nav" target="_blank" rel="noopener">Download</a></li>
         </ul>
     </div>
 </nav>
@@ -81,12 +83,13 @@
     <div class="sh-pin" id="sh-pin">
         <div class="sh-intro" id="sh-intro">
             <div class="intro-inner">
-                <span class="kicker">Hypixel SkyBlock · Coflnet · Rust · AGPLv3</span>
+                <span class="app-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7l5 5-5 5"/><path d="M12.5 17H19"/></svg></span>
+                <span class="kicker glass"><i class="dot" aria-hidden="true"></i>Hypixel SkyBlock · Coflnet · Rust · AGPLv3</span>
                 <h1 class="intro-title">Snipe. Relist. Collect.<br><span class="accent">Repeat.</span></h1>
                 <p class="intro-lead">Frikadellen BAF is a free, open-source macro that flips the SkyBlock Auction House and Bazaar hands-free. It buys underpriced BINs in ~50ms, relists at target, works your bazaar orders, and reports every coin to a web panel and Discord.</p>
                 <div class="hero-buttons">
-                    <a href="#install" class="btn btn-primary">Get started →</a>
-                    <a href="#flips" class="btn btn-ghost">See the log</a>
+                    <a href="#install" class="btn btn-primary">Get started</a>
+                    <a href="#flips" class="btn btn-ghost glass">See the log</a>
                 </div>
                 <span class="scroll-cue">scroll</span>
             </div>
@@ -131,7 +134,7 @@
 
         <div class="sh-right">
             <div class="terminal-wrap">
-                <div class="term" role="img" aria-label="A replay of real Frikadellen BAF log lines: booting, buying underpriced auctions, relisting for profit, and running bazaar orders.">
+                <div class="term glass tint" role="img" aria-label="A replay of real Frikadellen BAF log lines: booting, buying underpriced auctions, relisting for profit, and running bazaar orders.">
                     <div class="term-bar">
                         <div class="term-dots" aria-hidden="true"><i></i><i></i><i></i></div>
                         <span class="term-title"><b>frikadellen-baf</b> · real log lines</span>
@@ -166,22 +169,22 @@
             <p class="section-subtitle">Buying is the easy part. BAF also takes care of everything around a flip: recovery, relisting, order management and remote control.</p>
         </div>
         <div class="value-grid">
-            <article class="feature-card marks reveal">
+            <article class="feature-card glass lit reveal">
                 <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="2.5"/></svg></div>
                 <h3>Snipes in ~50ms</h3>
                 <p>Coflnet's sniper feed flags the underpriced BIN; BAF pre-clicks Confirm and finishes the buy before the window renders.</p>
             </article>
-            <article class="feature-card marks reveal">
+            <article class="feature-card glass lit reveal">
                 <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></div>
                 <h3>Runs the Bazaar too</h3>
                 <p>Places, fills, collects and re-prices buy &amp; sell orders automatically. AH and Bazaar toggle independently.</p>
             </article>
-            <article class="feature-card marks reveal">
+            <article class="feature-card glass lit reveal">
                 <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M9 2h6"/></svg></div>
                 <h3>Built to stay up</h3>
                 <p>Auto-reconnect, a GUI watchdog that frees stuck windows, packet-rate limiting and multi-account rotation.</p>
             </article>
-            <article class="feature-card marks reveal">
+            <article class="feature-card glass lit reveal">
                 <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 10 10"/><path d="M22 4v4h-4"/></svg></div>
                 <h3>Free &amp; open source</h3>
                 <p>AGPLv3, written in Rust, no subscription. You bring a Minecraft account, a Coflnet account and a machine.</p>
@@ -203,10 +206,10 @@
             <span class="sec-num">02 · The log</span>
             <h2 class="section-title">The record<br>is public</h2>
             <p class="section-subtitle">Eight of the biggest snipes on record, out of <strong>37,805 profitable sales</strong> tracked by the live backend: <strong>232.3B</strong> in realized profit. Item, buy price, sale price, ROI.</p>
-            <ol class="fs-rail" id="fs-rail"></ol>
+            <ol class="fs-rail glass" id="fs-rail"></ol>
         </div>
         <div class="fs-right">
-            <article class="fs-card" id="fs-card" aria-live="polite"></article>
+            <article class="fs-card glass lit" id="fs-card" aria-live="polite"></article>
             <span class="live-note"><span class="pulse"></span> live backend log · realized sales, anonymized</span>
         </div>
     </div>
@@ -220,17 +223,15 @@
             <h2 class="section-title">See it flip</h2>
             <p class="section-subtitle">A recorded session: sniping, relisting and collecting, hands-free.</p>
         </div>
-        <div class="video-wrapper reveal">
-            <iframe
-                src="https://www.youtube-nocookie.com/embed/6zNrmi9TlLw?rel=0"
-                title="Frikadellen BAF showcase"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                referrerpolicy="no-referrer-when-downgrade"
-                allowfullscreen
-            ></iframe>
+        <div class="video-wrapper glass reveal">
+            <!-- click to load: no YouTube requests (and no embed scroll jumps) until play -->
+            <button class="yt-facade" type="button" data-yt="6zNrmi9TlLw" data-title="Frikadellen BAF showcase" aria-label="Play the Frikadellen BAF showcase video">
+                <img src="assets/video-poster.webp" alt="" loading="lazy" decoding="async" width="1280" height="720">
+                <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8.5 5.8v12.4a.8.8 0 0 0 1.2.7l9.9-6.2a.8.8 0 0 0 0-1.4L9.7 5.1a.8.8 0 0 0-1.2.7z"/></svg></span>
+                <span class="yt-meta" aria-hidden="true">Showcase · plays from YouTube</span>
+            </button>
         </div>
-        <p class="video-fallback">Video not loading? <a href="https://www.youtube.com/watch?v=6zNrmi9TlLw" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+        <p class="video-fallback">Or <a href="https://www.youtube.com/watch?v=6zNrmi9TlLw" target="_blank" rel="noopener">watch it on YouTube ↗</a></p>
     </div>
 </section>
 
@@ -243,23 +244,24 @@
             <p class="section-subtitle">A real-time web panel and full Discord control. Check profit, pause, or list an item from your phone.</p>
         </div>
         <div class="screenshot-grid">
-            <figure class="screenshot-card span-2 reveal">
-                <figcaption class="screenshot-label">web panel · controls &amp; dashboard</figcaption>
-                <img src="assets/web-panel1.png" loading="lazy" alt="Web control panel: status, pause/claim controls, accounts, and inventory">
+            <figure class="screenshot-card glass lit span-2 reveal">
+                <figcaption class="screenshot-label">Web panel · controls</figcaption>
+                <img src="assets/web-panel1.webp" loading="lazy" width="2250" height="1425" alt="Web control panel with demo accounts: status, controls, account switcher, inventory and live chat">
             </figure>
-            <figure class="screenshot-card span-2 reveal">
-                <figcaption class="screenshot-label">web panel · auctions, bazaar &amp; chat</figcaption>
-                <img src="assets/web-panel2.png" loading="lazy" alt="Web control panel showing active auctions, bazaar orders, and live chat">
+            <figure class="screenshot-card glass lit span-2 reveal">
+                <figcaption class="screenshot-label">Web panel · profit</figcaption>
+                <img src="assets/web-panel2.webp" loading="lazy" width="2250" height="1425" alt="Web control panel profit tab with demo data: total, auction and bazaar profit over time">
             </figure>
-            <figure class="screenshot-card reveal">
-                <figcaption class="screenshot-label">discord integration</figcaption>
-                <img src="assets/discord-integration.png" loading="lazy" alt="Controlling the bot from Discord with slash commands">
+            <figure class="screenshot-card glass lit reveal">
+                <figcaption class="screenshot-label">Discord commands</figcaption>
+                <img src="assets/discord-integration.webp" loading="lazy" width="1888" height="1024" alt="Discord slash commands for the bot: leaderboard, bots, status and list, shown with demo names">
             </figure>
-            <figure class="screenshot-card reveal">
-                <figcaption class="screenshot-label">public big-flips feed</figcaption>
-                <img src="assets/legendary-flips.png" loading="lazy" alt="Discord big-flips channel showing profit notifications">
+            <figure class="screenshot-card glass lit reveal">
+                <figcaption class="screenshot-label">Big-flips feed</figcaption>
+                <img src="assets/legendary-flips.webp" loading="lazy" width="1797" height="1265" alt="Discord big-flips channel showing profit notifications">
             </figure>
         </div>
+        <p class="shots-note">Panel and Discord shots use demo accounts and demo numbers. The big-flips feed is a real channel capture.</p>
     </div>
 </section>
 
@@ -269,17 +271,17 @@
         <div class="section-head reveal">
             <span class="sec-num">04 · Install</span>
             <h2 class="section-title">Running in a minute</h2>
-            <p class="section-subtitle">One Linux VPS, three commands. The loader keeps itself updated. Read the <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">README advisory</a> first.</p>
+            <p class="section-subtitle">One Linux VPS, three commands. The loader keeps itself updated.</p>
         </div>
 
         <div class="reveal">
             <div class="install-tabs">
-                <button type="button" class="tab active" data-tab="loader">Loader (recommended)</button>
+                <button type="button" class="tab active" data-tab="loader">Loader<span class="tab-note"> (recommended)</span></button>
                 <button type="button" class="tab" data-tab="release">Standalone</button>
             </div>
 
             <div class="install-content active" id="tab-loader">
-                <div class="terminal">
+                <div class="terminal glass tint">
                     <div class="terminal-header">
                         <span class="terminal-title">bash · Linux VPS (auto-updating)</span>
                     </div>
@@ -293,7 +295,7 @@
             </div>
 
             <div class="install-content" id="tab-release">
-                <div class="terminal">
+                <div class="terminal glass tint">
                     <div class="terminal-header">
                         <span class="terminal-title">bash · Linux VPS</span>
                     </div>
@@ -307,7 +309,7 @@
             </div>
 
             <div class="install-cta">
-                <a href="https://github.com/TreXito/frikadellen-baf-121#readme" class="btn btn-ghost" target="_blank" rel="noopener">Full setup guide (rent a VPS → run) →</a>
+                <a href="https://github.com/TreXito/frikadellen-baf-121#readme" class="btn btn-ghost glass" target="_blank" rel="noopener">Full setup guide: rent a VPS, run it</a>
             </div>
         </div>
     </div>
@@ -320,7 +322,7 @@
             <span class="sec-num">05 · FAQ</span>
             <h2 class="section-title">The essentials</h2>
         </div>
-        <div class="faq reveal">
+        <div class="faq glass reveal">
             <details class="faq-item" open>
                 <summary>What is Frikadellen BAF?</summary>
                 <p>A <strong>Hypixel SkyBlock macro</strong> that flips the Auction House and Bazaar for you. It snipes underpriced BIN auctions, relists them at target, runs your bazaar orders, and tracks profit. Controllable from a web panel or straight from Discord.</p>
@@ -353,22 +355,23 @@
 <footer>
     <div class="container footer-content">
         <div class="footer-brand">
-            <span class="logo"><span class="coin">❯</span> frikadellen<span class="logo-baf">baf</span></span>
+            <span class="logo"><span class="coin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 7l5 5-5 5"/><path d="M12.5 17H19"/></svg></span><span class="wordmark">frikadellen<span class="logo-baf">baf</span></span></span>
             <p>Coflnet-powered Auction House &amp; Bazaar flipper for Hypixel SkyBlock. Free and open source.</p>
         </div>
         <nav class="footer-links" aria-label="Footer">
             <a href="https://github.com/TreXito/frikadellen-baf-121" target="_blank" rel="noopener">GitHub</a>
             <a href="https://github.com/TreXito/frikadellen-baf-121/releases" target="_blank" rel="noopener">Releases</a>
-            <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">README &amp; advisory</a>
+            <a href="https://github.com/TreXito/frikadellen-baf-121#readme" target="_blank" rel="noopener">Setup guide</a>
             <a href="https://trexito.com" target="_blank" rel="noopener">trexito.com</a>
         </nav>
     </div>
     <p class="footer-copy">© 2026 <a href="https://trexito.com" target="_blank" rel="noopener">TreXito</a> · AGPLv3 · Not affiliated with Hypixel, Mojang or Coflnet · Profit figures are realized sales recorded by the backend</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="terminal.js"></script>
-<script src="main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js" integrity="sha384-R18XzqnxvVLEF+BYfhpmDx30v7eP83fAckyfoRzK7/Uf6nGqufcmsk0eAKo7S3RU" crossorigin="anonymous"></script>
+<script src="terminal.js?v=4"></script>
+<script src="main.js?v=5"></script>
 </body>
 </html>
