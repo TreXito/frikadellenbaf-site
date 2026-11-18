@@ -1,8 +1,10 @@
 /* ============================================================================
-   main.js — motion & interaction.
+   main.js: motion & interaction.
+   • Lenis inertial scroll, driven by GSAP's ticker so pinned sections stay in sync.
    • Scroll hero: pin the terminal, advance ONE full action per scroll step.
    • Big-flips showcase: scroll through each flip.
-   • Reveals (GSAP or IntersectionObserver fallback), nav, install tabs.
+   • Reveals (GSAP or IntersectionObserver fallback), nav lens, install tabs,
+     pointer light on glass.
    ========================================================================== */
 (function () {
   const root = document.documentElement;
@@ -14,11 +16,69 @@
   const hasGSAP = typeof window.gsap !== 'undefined' && !reduce;
   const canPin = hasGSAP && desktop;
 
-  /* ── nav shadow ──────────────────────────────────────────────────────── */
+  if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
+
+  /* ── inertial scroll ─────────────────────────────────────────────────── */
+  if (!reduce && window.Lenis) {
+    const lenis = new window.Lenis({ lerp: 0.1, anchors: true, autoRaf: !hasGSAP });
+    if (hasGSAP) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(t => lenis.raf(t * 1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+  }
+
+  /* ── nav: compact on scroll, glass lens under the current section ───── */
   const nav = document.getElementById('navbar');
-  if (nav) {
-    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
-    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const lens = document.querySelector('.nav-lens');
+  const navLinks = Array.from(document.querySelectorAll('.nav-links .nav-hide a'));
+  const navSecs = navLinks.map(a => document.getElementById((a.getAttribute('href') || '').slice(1)));
+  let navCur = -2;
+  function placeLens(i, force) {
+    if (!lens || (i === navCur && !force)) return;
+    const jump = navCur < 0 || force;
+    navCur = i;
+    navLinks.forEach((a, k) => a.setAttribute('aria-current', k === i ? 'true' : 'false'));
+    if (i < 0) { lens.style.opacity = '0'; return; }
+    const a = navLinks[i];
+    if (jump) lens.style.transition = 'opacity .35s';
+    lens.style.translate = a.offsetLeft + 'px 0';
+    lens.style.width = a.offsetWidth + 'px';
+    lens.style.opacity = '1';
+    if (jump) requestAnimationFrame(() => requestAnimationFrame(() => { lens.style.transition = ''; }));
+  }
+  function pickSection() {
+    const line = innerHeight * 0.45; let idx = -1;
+    navSecs.forEach((s, i) => { if (s && !s.hidden && s.getBoundingClientRect().top <= line) idx = i; });
+    placeLens(idx);
+  }
+  let navTick = false;
+  function onScroll() {
+    if (navTick) return; navTick = true;
+    requestAnimationFrame(() => {
+      navTick = false;
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 30);
+      if (lens && navLinks.length) pickSection();
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  addEventListener('resize', () => placeLens(navCur, true));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => placeLens(navCur, true));
+
+  /* ── pointer light on glass ──────────────────────────────────────────── */
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let lit = null, px = 0, py = 0, queued = false;
+    document.addEventListener('pointermove', (e) => {
+      lit = e.target && e.target.closest ? e.target.closest('.lit') : null; px = e.clientX; py = e.clientY;
+      if (!lit || queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false; if (!lit) return;
+        const r = lit.getBoundingClientRect();
+        lit.style.setProperty('--mx', (px - r.left) + 'px');
+        lit.style.setProperty('--my', (py - r.top) + 'px');
+      });
+    }, { passive: true });
   }
 
   /* ── install tabs ────────────────────────────────────────────────────── */
@@ -41,11 +101,10 @@
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   }
   if (hasGSAP) {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.set('.reveal', { opacity: 0, y: 28 });
+    gsap.set('.reveal', { opacity: 0, y: 30, scale: .985 });
     ScrollTrigger.batch('.reveal', {
-      start: 'top 88%',
-      onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', stagger: .08, overwrite: true }),
+      start: 'top 90%',
+      onEnter: b => gsap.to(b, { opacity: 1, y: 0, scale: 1, duration: 1.1, ease: 'expo.out', stagger: .07, overwrite: true }),
     });
     gsap.utils.toArray('.section-head').forEach(h => gsap.fromTo(h, { y: 16 }, {
       y: -12, ease: 'none', scrollTrigger: { trigger: h, start: 'top bottom', end: 'top 26%', scrub: true },
@@ -194,5 +253,19 @@
       ph.innerHTML = (label ? label.textContent.trim() : 'Screenshot') + '<span class="img-error-sub">preview coming soon</span>';
       img.replaceWith(ph);
     });
+  });
+
+  /* ── video: swap the poster for the YouTube player on first click ────── */
+  document.querySelectorAll('.yt-facade').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + btn.dataset.yt + '?rel=0&autoplay=1&playsinline=1';
+      f.title = btn.dataset.title || 'Video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      btn.replaceWith(f);
+      f.focus();
+    }, { once: true });
   });
 })();
